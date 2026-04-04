@@ -1,0 +1,74 @@
+name: genomiq
+version: "1.0.0"
+description: "RL environment where an AI agent discovers hidden gene expression patterns like a research scientist."
+tasks:
+  # Core tasks (original)
+  - name: single_regulator
+    description: "Find 1 master gene controlling expression in a 20-gene matrix."
+    difficulty: easy
+  - name: coexpression_cluster
+    description: "Identify 3 co-regulated genes across a 50-gene, 3-condition dataset."
+    difficulty: medium
+  - name: interaction_effect
+    description: "Discover a gene pair whose combined activity drives a hidden phenotype."
+    difficulty: hard
+  # Disease Genomics
+  - name: cancer_gene_panel
+    description: "Identify 1 driver mutation from a 30-gene cancer panel."
+    difficulty: easy
+  - name: rare_disease_cluster
+    description: "Find 3 co-dysregulated genes in a rare disease expression profile."
+    difficulty: medium
+  - name: polygenic_interaction
+    description: "Discover a multi-gene interaction driving a complex disease phenotype."
+    difficulty: hard
+  # Drug Target
+  - name: drug_affinity
+    description: "Identify the high-affinity binding molecule in a compound library."
+    difficulty: easy
+  - name: multi_target_screen
+    description: "Find 3 candidate drug targets from a 80-compound screen."
+    difficulty: medium
+  - name: synergy_detection
+    description: "Discover a synergistic drug pair with combined therapeutic effect."
+    difficulty: hard
+  # Gene Regulatory Networks
+  - name: single_tf_binding
+    description: "Identify 1 transcription factor regulating a target gene set."
+    difficulty: easy
+  - name: regulatory_cascade
+    description: "Map a 3-gene regulatory cascade from expression data."
+    difficulty: medium
+  - name: feedback_loop
+    description: "Discover a feedback loop interaction between 2 regulatory genes."
+    difficulty: hard
+  # Epigenomics
+  - name: methylation_marker
+    description: "Find 1 differentially methylated gene from a CpG panel."
+    difficulty: easy
+  - name: chromatin_cluster
+    description: "Identify 3 genes with correlated chromatin accessibility changes."
+    difficulty: medium
+  - name: epigenetic_interaction
+    description: "Discover a gene pair with synergistic epigenetic modification effects."
+    difficulty: hard
+  # Synthetic Biology
+  - name: promoter_strength
+    description: "Identify the strongest promoter in a synthetic gene circuit."
+    difficulty: easy
+  - name: circuit_module
+    description: "Find 3 interacting components in a synthetic gene circuit."
+    difficulty: medium
+  - name: pathway_crosstalk
+    description: "Discover cross-talk interactions between 2 synthetic pathways."
+    difficulty: hard
+tags:
+  - openenv
+  - real-world
+  - genomics
+  - gene-expression
+  - scientific-discovery
+  - disease-genomics
+  - drug-target
+  - epigenomics
+  - synthetic-biology

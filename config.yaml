@@ -1,0 +1,32 @@
+agent:
+  exploration: epsilon_greedy
+  learning_rate: 0.0003
+  type: greedy
+  use_claude_oracle: false
+constraints:
+  cost_tier: mixed
+  noise_level: 2.0
+  time_limit: 0
+dataset:
+  name: ''
+  source: synthetic
+prior_knowledge:
+  associations: []
+  literature_hints: []
+  seed_genes: []
+rewards:
+  discovery_bonus: 20.0
+  hypothesis_improvement_bonus: 5.0
+  step_penalty: -0.1
+  useless_experiment_penalty: -2.0
+scenario:
+  difficulty: medium
+  domain: gene_expression
+  max_steps: 50
+  num_episodes: 10
+  objective: Identify Key Regulator Genes
+  seed: 42
+visualization:
+  persistence_path: results/latest_run.json
+  real_time_charts: true
+  theme: light
