@@ -1,18 +1,11 @@
 ---
-title: GenomIQ — Scientific Discovery Lab
-emoji: 🔬
+title: GenomIQ — Autonomous Scientific Discovery Platform
+emoji: 🧬
 colorFrom: indigo
-colorTo: slate
+colorTo: blue
 sdk: docker
-sdk_version: "4.0.0"
-app_file: server/app.py
 pinned: false
-tags:
-  - openenv
-  - reinforcement-learning
-  - genomics
-  - scientific-discovery
-  - bioinformatics
+license: mit
 ---
 
 # GenomIQ — Automated Scientific Discovery RL Environment
