@@ -1580,6 +1580,8 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
                     "https://ui-avatars.com/api/?name=AI&background=6366f1&color=ffffff&rounded=true&bold=true"
                 ),
                 container=False,
+                type="messages",
+                allow_tags=True
             )
             with gr.Row():
                 with gr.Column(scale=8):
@@ -1611,7 +1613,8 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
                 data = load_results()
                 response = ask_scientist(message, data)
                 history = history or []
-                history.append((message, response))
+                history.append({"role": "user", "content": message})
+                history.append({"role": "assistant", "content": response})
                 return history, ""
 
             chat_send.click(fn=chat_respond, inputs=[chat_input, chatbot],
@@ -1656,4 +1659,8 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
 # ── Launch ────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    demo.queue().launch(server_name="0.0.0.0", server_port=7860)
+    demo.queue().launch(
+        server_name="0.0.0.0", 
+        server_port=7860, 
+        pwa=True
+    )
