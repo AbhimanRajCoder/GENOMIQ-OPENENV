@@ -1575,13 +1575,10 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
             chatbot = gr.Chatbot(
                 label="GenomIQ AI Scientist",
                 height=500,
-                type="messages",
-                bubble_full_width=False,
                 avatar_images=(
                     "https://ui-avatars.com/api/?name=U&background=f1f5f9&color=334155&rounded=true&bold=true",
                     "https://ui-avatars.com/api/?name=AI&background=6366f1&color=ffffff&rounded=true&bold=true"
                 ),
-                show_copy_button=True,
                 container=False,
             )
             with gr.Row():
@@ -1614,8 +1611,7 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
                 data = load_results()
                 response = ask_scientist(message, data)
                 history = history or []
-                history.append({"role": "user", "content": message})
-                history.append({"role": "assistant", "content": response})
+                history.append((message, response))
                 return history, ""
 
             chat_send.click(fn=chat_respond, inputs=[chat_input, chatbot],
