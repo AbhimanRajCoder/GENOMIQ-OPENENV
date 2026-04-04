@@ -1579,9 +1579,7 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
                     "https://ui-avatars.com/api/?name=U&background=f1f5f9&color=334155&rounded=true&bold=true",
                     "https://ui-avatars.com/api/?name=AI&background=6366f1&color=ffffff&rounded=true&bold=true"
                 ),
-                container=False,
-                type="messages",
-                allow_tags=True
+                container=False
             )
             with gr.Row():
                 with gr.Column(scale=8):
@@ -1613,8 +1611,14 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
                 data = load_results()
                 response = ask_scientist(message, data)
                 history = history or []
-                history.append({"role": "user", "content": message})
-                history.append({"role": "assistant", "content": response})
+                
+                # Robustly detect if we're using the new messages format or old tuples
+                if isinstance(history, list) and len(history) > 0 and isinstance(history[0], dict):
+                    history.append({"role": "user", "content": message})
+                    history.append({"role": "assistant", "content": response})
+                else:
+                    # Default to tuples for compatibility (Gradio < 5.0)
+                    history.append((message, response))
                 return history, ""
 
             chat_send.click(fn=chat_respond, inputs=[chat_input, chatbot],
