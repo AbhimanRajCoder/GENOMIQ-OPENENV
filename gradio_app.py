@@ -1612,13 +1612,10 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
                 response = ask_scientist(message, data)
                 history = history or []
                 
-                # Robustly detect if we're using the new messages format or old tuples
-                if isinstance(history, list) and len(history) > 0 and isinstance(history[0], dict):
-                    history.append({"role": "user", "content": message})
-                    history.append({"role": "assistant", "content": response})
-                else:
-                    # Default to tuples for compatibility (Gradio < 5.0)
-                    history.append((message, response))
+                # Gradio 5+ defaults to 'messages' format (list of dicts)
+                # The traceback confirms this format is required.
+                history.append({"role": "user", "content": message})
+                history.append({"role": "assistant", "content": response})
                 return history, ""
 
             chat_send.click(fn=chat_respond, inputs=[chat_input, chatbot],
