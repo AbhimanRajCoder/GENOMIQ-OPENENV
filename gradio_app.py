@@ -1545,17 +1545,28 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
             </div>
             """)
 
-            chatbot = gr.Chatbot(
-                label="GenomIQ AI Scientist",
-                height=500,
-                type="messages",
-                allow_tags=True,
-                avatar_images=(
-                    "https://ui-avatars.com/api/?name=U&background=f1f5f9&color=334155&rounded=true&bold=true",
-                    "https://ui-avatars.com/api/?name=AI&background=6366f1&color=ffffff&rounded=true&bold=true"
-                ),
-                container=False
-            )
+            # Robust chatbot initialization for cross-version compatibility
+            try:
+                chatbot = gr.Chatbot(
+                    label="GenomIQ AI Scientist",
+                    height=500,
+                    type="messages",
+                    allow_tags=True,
+                    avatar_images=(
+                        "https://ui-avatars.com/api/?name=U&background=f1f5f9&color=334155&rounded=true&bold=true",
+                        "https://ui-avatars.com/api/?name=AI&background=6366f1&color=ffffff&rounded=true&bold=true"
+                    )
+                )
+            except TypeError:
+                # Fallback for Gradio 4.x or different component signatures
+                chatbot = gr.Chatbot(
+                    label="GenomIQ AI Scientist",
+                    height=500,
+                    avatar_images=(
+                        "https://ui-avatars.com/api/?name=U&background=f1f5f9&color=334155&rounded=true&bold=true",
+                        "https://ui-avatars.com/api/?name=AI&background=6366f1&color=ffffff&rounded=true&bold=true"
+                    )
+                )
             with gr.Row():
                 with gr.Column(scale=8):
                     chat_input = gr.Textbox(
