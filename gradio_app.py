@@ -18,7 +18,10 @@ from pathlib import Path
 import gradio as gr
 import pandas as pd
 import yaml
+import uvicorn
+from fastapi import FastAPI
 
+from server.app import app as api_app
 from app_theme import GenomIQTheme
 from utils.report_generator import (
     generate_report, generate_discovery_card_html, generate_missed_card_html,
@@ -1660,8 +1663,9 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
 # ── Launch ────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    demo.queue().launch(
-        server_name="0.0.0.0", 
-        server_port=7860, 
-        pwa=True
-    )
+    # Mount the Gradio UI directly onto the existing server API app
+    # This preserves the lifespan events and API routes from server.app
+    app = gr.mount_gradio_app(api_app, demo, path="/")
+    
+    # Run via uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=7860)
