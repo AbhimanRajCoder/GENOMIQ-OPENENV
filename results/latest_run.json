@@ -1,6 +1,6 @@
 {
   "run_metadata": {
-    "timestamp": "2026-04-08T00:53:12.202216",
+    "timestamp": "2026-04-08T01:01:48.435699",
     "elapsed_seconds": 0.02,
     "domain": "gene_expression",
     "difficulty": "medium",
@@ -242,11 +242,11 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "TP53",
-          "MAPK3",
           "FGF2",
+          "TP53",
+          "PIK3CA",
           "BRCA2",
-          "PIK3CA"
+          "MAPK3"
         ],
         "edges": [
           {
@@ -442,10 +442,10 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "GLUT1",
+          "NOTCH2",
           "KLF4",
           "GATA1",
-          "NOTCH2"
+          "GLUT1"
         ],
         "edges": [
           {
@@ -636,10 +636,10 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "SNAI1",
+          "ETS1",
           "CD40",
-          "CHEK2",
-          "ETS1"
+          "SNAI1",
+          "CHEK2"
         ],
         "edges": [
           {
@@ -830,9 +830,9 @@
       ],
       "knowledge_graph": {
         "nodes": [
+          "TET1",
           "RAF1",
-          "COL1A1",
-          "TET1"
+          "COL1A1"
         ],
         "edges": [
           {
@@ -1037,10 +1037,10 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "UBC",
-          "CPT1A",
+          "RAD50",
           "RAD51",
-          "RAD50"
+          "UBC",
+          "CPT1A"
         ],
         "edges": [
           {
@@ -1232,10 +1232,10 @@
       "knowledge_graph": {
         "nodes": [
           "SRC",
-          "LEF1",
-          "GLUT1",
+          "ATM",
           "CD28",
-          "ATM"
+          "GLUT1",
+          "LEF1"
         ],
         "edges": [
           {
@@ -1435,8 +1435,8 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "MSH2",
-          "ATM"
+          "ATM",
+          "MSH2"
         ],
         "edges": [
           {
@@ -1612,10 +1612,10 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "IL10",
-          "XIAP",
+          "RAD51",
           "CDC25A",
-          "RAD51"
+          "IL10",
+          "XIAP"
         ],
         "edges": [
           {
@@ -1842,8 +1842,8 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "ZEB1",
           "FEN1",
+          "ZEB1",
           "ARNT"
         ],
         "edges": [
@@ -2029,8 +2029,8 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "JUN",
-          "CCNB1"
+          "CCNB1",
+          "JUN"
         ],
         "edges": [
           {
