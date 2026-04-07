@@ -18,10 +18,7 @@ from pathlib import Path
 import gradio as gr
 import pandas as pd
 import yaml
-import uvicorn
-from fastapi import FastAPI
 
-from server.app import app as api_app
 from app_theme import GenomIQTheme
 from utils.report_generator import (
     generate_report, generate_discovery_card_html, generate_missed_card_html,
@@ -51,94 +48,124 @@ LOG_PATH = "logs/genomiq.log"
 # ── CSS ───────────────────────────────────────────────────────────────────────
 
 CUSTOM_CSS = """
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-:root {
-    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.1);
-}
-
-.gradio-container { 
-    max-width: 1440px !important; 
-    font-family: 'Inter', sans-serif !important;
-    background: #0b0f1a !important; /* Force deep navy for premium feel */
-    color: #f8fafc !important;
-}
-
-/* Glassmorphism for components */
-.gradio-container .block, .gradio-container .form {
-    background: var(--glass-bg) !important;
-    backdrop-filter: blur(12px) !important;
-    border: 1px solid var(--glass-border) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
-}
+.gradio-container { max-width: 1440px !important; font-family: 'Inter', sans-serif !important; }
 
 /* Smooth transitions everywhere */
-.gradio-container * { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.gradio-container * { transition: all 0.2s ease; }
 
-/* Button Premium styling */
+/* Button hover lift */
 button.primary {
-    background: var(--primary-gradient) !important;
-    border: none !important;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3) !important;
+    box-shadow: 0 1px 3px rgba(79,70,229,0.2) !important;
 }
 button.primary:hover {
-    transform: translateY(-2px) scale(1.02) !important;
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(79,70,229,0.25) !important;
 }
 
-/* Tab styling with glass effect */
-.tab-nav {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 12px !important;
-    padding: 4px !important;
-}
-.tab-nav button { 
-    font-weight: 600 !important; 
-    letter-spacing: 0.02em !important;
-    border-radius: 8px !important;
-}
+/* Tab styling */
+.tab-nav button { font-weight: 600 !important; letter-spacing: 0.02em !important; }
 .tab-nav button.selected {
-    background: var(--primary-gradient) !important;
-    color: white !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    border-bottom: 2.5px solid #4f46e5 !important;
+    color: #4f46e5 !important;
 }
 
 /* Card hover effects */
-.card-hover:hover { 
-    transform: translateY(-4px) !important; 
-    box-shadow: 0 12px 40px rgba(0,0,0,0.4) !important; 
-    border-color: #6366f1 !important;
+.card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+
+/* Accordion styling */
+.accordion { border: 1px solid var(--border-color-primary) !important; border-radius: 8px !important; }
+
+/* DataFrame styling */
+table { border-radius: 8px !important; overflow: hidden !important; }
+thead th { background: var(--background-fill-secondary) !important; color: var(--body-text-color) !important; font-weight: 600 !important; }
+
+/* Subtle pulse animation for live indicators */
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.live-dot { animation: pulse 2s infinite; }
+
+/* Shimmer skeleton loading effect */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.shimmer-loading {
+  background: linear-gradient(90deg, var(--background-fill-secondary) 25%, var(--border-color-primary) 50%, var(--background-fill-secondary) 75%) !important;
+  background-size: 800px 100% !important;
+  animation: shimmer 1.5s infinite linear !important;
 }
 
+/* Spinner animation */
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.spinner {
+  width: 20px; height: 20px;
+  border: 2.5px solid var(--border-color-primary);
+  border-top: 2.5px solid #6366f1;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+/* Glow pulse for active simulation */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(99,102,241,0.2); }
+  50% { box-shadow: 0 0 20px rgba(99,102,241,0.4); }
+}
+.sim-active { animation: glow-pulse 2s ease-in-out infinite; }
+
+/* Progress bar animation */
+@keyframes progress-stripe {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+.progress-animated {
+  background-image: linear-gradient(
+    45deg, rgba(255,255,255,0.15) 25%, transparent 25%,
+    transparent 50%, rgba(255,255,255,0.15) 50%,
+    rgba(255,255,255,0.15) 75%, transparent 75%, transparent
+  ) !important;
+  background-size: 40px 40px !important;
+  animation: progress-stripe 1s linear infinite !important;
+}
 /* Research Terminal Log Styling */
 .research-log-container {
-  background: #111827 !important;
-  border: 1px solid #374151 !important;
+  background: var(--background-fill-secondary);
+  border: 1px solid var(--border-color-primary);
   border-radius: 12px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 11.5px;
   line-height: 1.6;
   height: 380px;
   overflow-y: auto;
   padding: 16px;
-  color: #e5e7eb !important;
-  box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+  color: var(--body-text-color);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
 }
+.research-log-container::-webkit-scrollbar { width: 6px; }
+.research-log-container::-webkit-scrollbar-thumb { background: var(--border-color-primary); border-radius: 10px; }
 
-.log-entry.success { border-left: 3px solid #10b981; background: rgba(16,185,129,0.1); }
-.log-entry.failed { border-left: 3px solid #ef4444; background: rgba(239,68,68,0.1); }
-.log-entry.action { color: #a78bfa; font-weight: 600; }
+.log-entry { margin-bottom: 6px; border-left: 2px solid transparent; padding-left: 10px; }
+.log-entry.success { border-left-color: #10b981; color: #065f46; background: rgba(16,185,129,0.03); }
+.log-entry.failed { border-left-color: #ef4444; color: #991b1b; background: rgba(239,68,68,0.03); }
+.log-entry.episode { border-bottom: 1px solid var(--border-color-primary); padding: 12px 0 6px; margin: 12px 0 8px; font-weight: 700; color: #6366f1; }
+.log-entry.action { color: #8b5cf6; }
 
-/* Dashboard Header */
-.dashboard-header h1 {
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
+.log-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-right: 8px;
+  letter-spacing: 0.5px;
 }
+.badge-step { background: var(--border-color-primary); color: var(--body-text-color-subdued); }
+.badge-hit { background: #dcfce7; color: #166534; }
+.badge-miss { background: #fee2e2; color: #991b1b; }
+.badge-submit { background: #eef2ff; color: #4338ca; }
+.badge-error { background: #fef2f2; color: #991b1b; border: 1px solid #fee2e2; }
 """
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -1548,13 +1575,13 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
             chatbot = gr.Chatbot(
                 label="GenomIQ AI Scientist",
                 height=500,
-                type="messages",
-                allow_tags=True,
                 avatar_images=(
                     "https://ui-avatars.com/api/?name=U&background=f1f5f9&color=334155&rounded=true&bold=true",
                     "https://ui-avatars.com/api/?name=AI&background=6366f1&color=ffffff&rounded=true&bold=true"
                 ),
-                container=False
+                container=False,
+                type="messages",
+                allow_tags=True
             )
             with gr.Row():
                 with gr.Column(scale=8):
@@ -1586,9 +1613,6 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
                 data = load_results()
                 response = ask_scientist(message, data)
                 history = history or []
-                
-                # Gradio 5+ defaults to 'messages' format (list of dicts)
-                # The traceback confirms this format is required.
                 history.append({"role": "user", "content": message})
                 history.append({"role": "assistant", "content": response})
                 return history, ""
@@ -1635,12 +1659,8 @@ with gr.Blocks(theme=theme, title="GenomIQ — Scientific Discovery Lab", css=CU
 # ── Launch ────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    # Ensure queuing is enabled before mounting for real-time updates
-    demo.queue()
-    
-    # Mount the Gradio UI directly onto the existing server API app
-    # This preserves the lifespan events and API routes from server.app
-    app = gr.mount_gradio_app(api_app, demo, path="/")
-    
-    # Run via uvicorn for production-grade serving
-    uvicorn.run(app, host="0.0.0.0", port=7860)
+    demo.queue().launch(
+        server_name="0.0.0.0", 
+        server_port=7860, 
+        pwa=True
+    )
