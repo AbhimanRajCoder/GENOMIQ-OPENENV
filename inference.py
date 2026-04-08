@@ -15,7 +15,7 @@ from openai import OpenAI
 
 # ── Environment variables ─────────────────────────────────────────────────────
 
-API_BASE_URL = os.getenv("API_BASE_URL", "https://api-inference.huggingface.co/v1")
+API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
 MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2.5-72B-Instruct")
 HF_TOKEN = os.getenv("HF_TOKEN", "")
 SERVER_URL = os.getenv("SERVER_URL", "http://localhost:7860")
@@ -181,8 +181,10 @@ def run_episode(task_name: str) -> dict:
 
         # Compute score from rewards if not already set (OpenEnv: strictly between 0 and 1)
         if final_score == 0.0 and rewards:
+            epsilon = 1e-6
             total_positive = sum(r for r in rewards if r > 0)
-            final_score = float(max(0.001, min(0.999, total_positive / max(1, len(rewards)) / 20.0)))
+            avg_rew = total_positive / max(1, len(rewards)) / 20.0
+            final_score = float(max(epsilon, min(1 - epsilon, avg_rew)))
 
     except Exception as e:
         error_msg = str(e)
@@ -209,6 +211,17 @@ def main() -> None:
 
     # Core mandated tasks (always run)
     tasks = ["single_regulator", "coexpression_cluster", "interaction_effect"]
+    
+    # PRO VALIDATOR OVERRIDES
+    if os.getenv("RUN_ALL_DOMAINS") == "1":
+        tasks = [
+            "single_regulator", "coexpression_cluster", "interaction_effect",
+            "cancer_gene_panel", "drug_affinity", "methylation_marker"
+        ]
+    
+    if os.getenv("LIMIT_TASKS") == "1":
+        tasks = tasks[:1]
+
     # Additional tasks can be selected via env var (comma-separated)
     extra = os.getenv("EXTRA_TASKS", "")
     if extra:
@@ -237,7 +250,7 @@ def main() -> None:
     print("=" * 50, flush=True)
     for r in results:
         status = "✓" if r["success"] else "✗"
-        print(f"{status} {r['task']}: score={r['score']:.3f} steps={r['steps']}", flush=True)
+        print(f"{status} {r['task']}: score={r['score']:.6f} steps={r['steps']}", flush=True)
 
 
 if __name__ == "__main__":

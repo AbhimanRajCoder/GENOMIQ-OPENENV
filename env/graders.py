@@ -28,6 +28,8 @@ def grade(trajectory: list[dict], final_state: dict, task_name: str) -> float:
         Float in [0.0, 1.0]. Always clamped. Deterministic and non-constant.
     """
 
+    epsilon = 1e-6
+
     # ── COMPONENT 1: Discovery Score (weight 0.50) ──────────────────────────
     submitted = set(final_state.get("submitted_candidates", []))
     truth = set(final_state.get("true_targets", []))
@@ -54,6 +56,9 @@ def grade(trajectory: list[dict], final_state: dict, task_name: str) -> float:
     else:
         discovery_score = min(1.0, gene_match)
 
+    # Clamp discovery
+    discovery_score = max(epsilon, min(1 - epsilon, discovery_score))
+
     # ── COMPONENT 2: Efficiency Score (weight 0.30) ─────────────────────────
     steps_used = len(trajectory)
     max_steps = final_state.get("max_steps", 50)
@@ -65,14 +70,17 @@ def grade(trajectory: list[dict], final_state: dict, task_name: str) -> float:
     else:
         efficiency_score = max(0.05, 1.0 - (steps_used / max_steps))
 
+    # Clamp efficiency
+    efficiency_score = max(epsilon, min(1 - epsilon, efficiency_score))
+
     # ── COMPONENT 3: Hypothesis Score (weight 0.20) ─────────────────────────
     final_conf = float(final_state.get("hypothesis_confidence", 0.0))
-    hypothesis_score = min(1.0, final_conf)
+    hypothesis_score = max(epsilon, min(1 - epsilon, final_conf))
 
     # ── FINAL ───────────────────────────────────────────────────────────────
     raw = (discovery_score * 0.50) + (efficiency_score * 0.30) + (hypothesis_score * 0.20)
     # OpenEnv Requirement: Each task's score must be strictly between 0 and 1 (not 0.0 and not 1.0)
-    return float(max(0.001, min(0.999, raw)))
+    return float(max(epsilon, min(1 - epsilon, raw)))
 
 
 # ── Validation scenarios ──────────────────────────────────────────────────────
