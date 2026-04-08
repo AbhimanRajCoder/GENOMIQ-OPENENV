@@ -28,7 +28,7 @@ def grade(trajectory: list[dict], final_state: dict, task_name: str) -> float:
         Float in [0.0, 1.0]. Always clamped. Deterministic and non-constant.
     """
 
-    epsilon = 1e-6
+    epsilon = 0.01
 
     # ── COMPONENT 1: Discovery Score (weight 0.50) ──────────────────────────
     submitted = set(final_state.get("submitted_candidates", []))
@@ -36,7 +36,7 @@ def grade(trajectory: list[dict], final_state: dict, task_name: str) -> float:
 
     max_possible = len(truth)
     if max_possible == 0:
-        gene_match = 0.0
+        gene_match = 0
     else:
         overlap = len(submitted & truth)
         gene_match = overlap / max_possible  # 0.0 if no match, 1.0 if perfect
@@ -51,7 +51,7 @@ def grade(trajectory: list[dict], final_state: dict, task_name: str) -> float:
     proximity_bonus = 0.2 if truth & genes_tested else 0.0
 
     # proximity_bonus only applies if agent didn't already get a full match
-    if gene_match == 0.0:
+    if gene_match == 0:
         discovery_score = min(1.0, gene_match + proximity_bonus)
     else:
         discovery_score = min(1.0, gene_match)
@@ -68,7 +68,7 @@ def grade(trajectory: list[dict], final_state: dict, task_name: str) -> float:
         # Budget exhausted without submitting — heavy penalty
         efficiency_score = 0.05
     else:
-        efficiency_score = max(0.05, 1.0 - (steps_used / max_steps))
+        efficiency_score = max(0.05, 1 - (steps_used / max_steps))
 
     # Clamp efficiency
     efficiency_score = max(epsilon, min(1 - epsilon, efficiency_score))

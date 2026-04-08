@@ -82,7 +82,7 @@ def start_server_proc():
     )
 
 def extract_scores(output: str) -> List[float]:
-    pattern = re.compile(r"score=([0-9]*\.?[0-9]+)")
+    pattern = re.compile(r"score\s*[:=]\s*([0-9]*\.?[0-9]+)")
     return [float(x) for x in pattern.findall(output)]
 
 def validate_line_format(line: str) -> bool:

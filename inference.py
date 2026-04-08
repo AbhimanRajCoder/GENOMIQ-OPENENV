@@ -4,6 +4,19 @@ GenomIQ baseline inference script.
 Uses OpenAI client only. Runs all 3 tasks and logs results.
 """
 
+# Score safety: strictly between 0 and 1 (never 0.0 or 1.0)
+SCORE_EPS = 0.01
+
+def clamp_score(s: float) -> float:
+    """Ensure score is strictly between 0 and 1."""
+    try:
+        val = float(s)
+        if val != val:  # NaN check
+            return SCORE_EPS
+        return max(SCORE_EPS, min(1.0 - SCORE_EPS, val))
+    except (ValueError, TypeError):
+        return SCORE_EPS
+
 import json
 import os
 import sys
@@ -38,8 +51,8 @@ def log_step(step: int, action: str, reward: float, done: bool, error: Optional[
 
 def log_end(success: bool, steps: int, score: float, rewards: list[float]) -> None:
     rewards_str = ",".join(f"{r:.2f}" for r in rewards)
-    # Three spaces after [END] for alignment; removed score to match strict spec
-    print(f"[END]   success={str(success).lower()} steps={steps} rewards={rewards_str}", flush=True)
+    safe_score = clamp_score(score)
+    print(f"[END]   success={str(success).lower()} steps={steps} score={safe_score:.6f} rewards={rewards_str}", flush=True)
 
 
 # ── LLM action selector ──────────────────────────────────────────────────────
@@ -179,16 +192,18 @@ def run_episode(task_name: str) -> dict:
             if done:
                 break
 
-        # Compute score from rewards if not already set (OpenEnv: strictly between 0 and 1)
+        # Compute score from rewards if not already set
         if final_score == 0.0 and rewards:
-            epsilon = 1e-6
             total_positive = sum(r for r in rewards if r > 0)
             avg_rew = total_positive / max(1, len(rewards)) / 20.0
-            final_score = float(max(epsilon, min(1 - epsilon, avg_rew)))
+            final_score = avg_rew
 
     except Exception as e:
         error_msg = str(e)
         print(f"Episode error: {e}", file=sys.stderr)
+
+    # ── CRITICAL: Always clamp score before ANY output ──
+    final_score = clamp_score(final_score)
 
     log_end(success=success, steps=steps, score=final_score, rewards=rewards)
 
@@ -250,7 +265,8 @@ def main() -> None:
     print("=" * 50, flush=True)
     for r in results:
         status = "✓" if r["success"] else "✗"
-        print(f"{status} {r['task']}: score={r['score']:.6f} steps={r['steps']}", flush=True)
+        safe = clamp_score(r['score'])
+        print(f"{status} {r['task']}: score={safe:.6f} steps={r['steps']}", flush=True)
 
 
 if __name__ == "__main__":

@@ -23,7 +23,7 @@ def extract_scores(output: str):
     scores = []
 
     # match floats between 0 and 1
-    matches = re.findall(r"(?:score\s*[:=]\s*)(0?\.\d+|1\.0+)", output)
+    matches = re.findall(r"(?:score\s*[:=]\s*)([0-9]*\.?[0-9]+)", output)
 
     for m in matches:
         try:

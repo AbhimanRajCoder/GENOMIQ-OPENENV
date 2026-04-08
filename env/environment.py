@@ -99,8 +99,8 @@ class GenomIQEnv:
         self.experiments_done = 0
         self.kg_nodes = 0
         self.hypothesis_confidence = 0.1
-        self.last_result = 0.0
-        self.numeric_signal = 0.0
+        self.last_result = 0
+        self.numeric_signal = 0
         self.current_hypothesis = "No hypothesis formed yet."
         self.trajectory = []
         self.done = False
@@ -349,7 +349,7 @@ class GenomIQEnv:
 
     async def step(self, action: Action) -> dict:
         if self.done:
-            return StepResult(observation=self._get_observation(), reward=0.0, done=True, info={}).model_dump()
+            return StepResult(observation=self._get_observation(), reward=0, done=True, info={}).model_dump()
 
         self.step_count += 1
         action_type = action.action_type
@@ -362,8 +362,8 @@ class GenomIQEnv:
             scan_cost_adj = -0.2   # more expensive
             qpcr_cost_adj = -0.5
         else:  # mixed
-            scan_cost_adj = 0.0
-            qpcr_cost_adj = 0.0
+            scan_cost_adj = 0
+            qpcr_cost_adj = 0
 
         reward = self.rew_cfg["step_penalty"]
         info = {}
@@ -544,13 +544,13 @@ class GenomIQEnv:
             if score >= self.task.target_score:
                 reward += self.rew_cfg["discovery_bonus"]
                 info["success"] = True
-                logger.info(f"  STEP {self.step_count} | {action_name} → ✅ SUCCESS! Score={score:.3f} (target={self.task.target_score})")
+                logger.info(f"  STEP {self.step_count} | {action_name} → ✅ SUCCESS! score={score:.6f} (target={self.task.target_score})")
                 logger.info(f"    Submitted: {submitted_candidates}")
                 logger.info(f"    Truth:     {self.true_gene_names}")
             else:
                 reward -= 10.0
                 info["success"] = False
-                logger.warning(f"  STEP {self.step_count} | {action_name} → ❌ FAILED. Score={score:.3f} (target={self.task.target_score})")
+                logger.warning(f"  STEP {self.step_count} | {action_name} → ❌ FAILED. score={score:.6f} (target={self.task.target_score})")
                 logger.warning(f"    Submitted: {submitted_candidates}")
                 logger.warning(f"    Truth:     {self.true_gene_names}")
             info["final_score"] = score
@@ -581,7 +581,7 @@ class GenomIQEnv:
             info["success"] = False
             info["submission"] = "budget_exhausted_no_submit"
             info["submitted_candidates"] = submitted_candidates
-            logger.warning(f"  STEP {self.step_count} | Budget exhausted (max={max_steps}). Score={score:.3f}")
+            logger.warning(f"  STEP {self.step_count} | Budget exhausted (max={max_steps}). score={score:.6f}")
             logger.warning(f"    Candidates at end: {submitted_candidates}")
             logger.warning(f"    Truth:             {self.true_gene_names}")
 
