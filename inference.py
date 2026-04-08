@@ -179,10 +179,10 @@ def run_episode(task_name: str) -> dict:
             if done:
                 break
 
-        # Compute score from rewards if not already set
+        # Compute score from rewards if not already set (OpenEnv: strictly between 0 and 1)
         if final_score == 0.0 and rewards:
             total_positive = sum(r for r in rewards if r > 0)
-            final_score = max(0.0, min(1.0, total_positive / max(1, len(rewards)) / 20.0))
+            final_score = float(max(0.001, min(0.999, total_positive / max(1, len(rewards)) / 20.0)))
 
     except Exception as e:
         error_msg = str(e)

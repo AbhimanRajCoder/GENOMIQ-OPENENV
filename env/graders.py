@@ -71,7 +71,8 @@ def grade(trajectory: list[dict], final_state: dict, task_name: str) -> float:
 
     # ── FINAL ───────────────────────────────────────────────────────────────
     raw = (discovery_score * 0.50) + (efficiency_score * 0.30) + (hypothesis_score * 0.20)
-    return float(max(0.0, min(1.0, raw)))
+    # OpenEnv Requirement: Each task's score must be strictly between 0 and 1 (not 0.0 and not 1.0)
+    return float(max(0.001, min(0.999, raw)))
 
 
 # ── Validation scenarios ──────────────────────────────────────────────────────

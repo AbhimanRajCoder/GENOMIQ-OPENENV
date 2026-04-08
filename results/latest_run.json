@@ -1,7 +1,7 @@
 {
   "run_metadata": {
-    "timestamp": "2026-04-08T01:01:48.435699",
-    "elapsed_seconds": 0.02,
+    "timestamp": "2026-04-08T10:33:00.096482",
+    "elapsed_seconds": 0.04,
     "domain": "gene_expression",
     "difficulty": "medium",
     "objective": "Identify Key Regulator Genes",
@@ -242,11 +242,11 @@
       ],
       "knowledge_graph": {
         "nodes": [
+          "BRCA2",
+          "MAPK3",
           "FGF2",
           "TP53",
-          "PIK3CA",
-          "BRCA2",
-          "MAPK3"
+          "PIK3CA"
         ],
         "edges": [
           {
@@ -442,10 +442,10 @@
       ],
       "knowledge_graph": {
         "nodes": [
+          "GLUT1",
           "NOTCH2",
           "KLF4",
-          "GATA1",
-          "GLUT1"
+          "GATA1"
         ],
         "edges": [
           {
@@ -636,10 +636,10 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "ETS1",
           "CD40",
+          "CHEK2",
           "SNAI1",
-          "CHEK2"
+          "ETS1"
         ],
         "edges": [
           {
@@ -1037,10 +1037,10 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "RAD50",
-          "RAD51",
           "UBC",
-          "CPT1A"
+          "CPT1A",
+          "RAD50",
+          "RAD51"
         ],
         "edges": [
           {
@@ -1231,11 +1231,11 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "SRC",
+          "LEF1",
           "ATM",
-          "CD28",
           "GLUT1",
-          "LEF1"
+          "SRC",
+          "CD28"
         ],
         "edges": [
           {
@@ -1435,8 +1435,8 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "ATM",
-          "MSH2"
+          "MSH2",
+          "ATM"
         ],
         "edges": [
           {
@@ -1612,10 +1612,10 @@
       ],
       "knowledge_graph": {
         "nodes": [
+          "XIAP",
           "RAD51",
           "CDC25A",
-          "IL10",
-          "XIAP"
+          "IL10"
         ],
         "edges": [
           {
@@ -1842,8 +1842,8 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "FEN1",
           "ZEB1",
+          "FEN1",
           "ARNT"
         ],
         "edges": [
@@ -2029,8 +2029,8 @@
       ],
       "knowledge_graph": {
         "nodes": [
-          "CCNB1",
-          "JUN"
+          "JUN",
+          "CCNB1"
         ],
         "edges": [
           {
