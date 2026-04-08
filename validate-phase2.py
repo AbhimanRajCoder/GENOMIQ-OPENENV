@@ -182,7 +182,7 @@ def run_pro_validation(prod_url: str) -> Generator[Dict, None, None]:
             if server_proc: server_proc.terminate()
             return
         
-        logs += f"✅ Stage 1 passed. Average score: {sum(stage1_scores)/len(stage1_scores):.4f}\n"
+        logs += f"✅ Stage 1 passed. Average score: {sum(stage1_scores)/len(stage1_scores):.6f}\n"
         yield [logs, gr.update(), gr.update(), "✅ Passed", gr.update(), gr.update(), gr.update()]
     except Exception as e:
         logs += f"❌ Stage 1 Error: {str(e)}\n"

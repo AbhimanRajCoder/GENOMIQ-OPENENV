@@ -413,40 +413,40 @@ def generate_story_html(data: dict | None, ep_idx: int = 0) -> str:
         if a_type == 0:
             if is_hit:
                 narrative = f"Scanned <b>{gene}</b> — <span style='color:#059669;font-weight:600;'>Strong signal detected!</span> This gene shows differential expression.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: {reasoning}</span>"
-                reward_expl = f"Positive reward (+{reward:.1f}) for identifying a true target via scan."
+                reward_expl = f"Positive reward (+{reward:.2f}) for identifying a true target via scan."
             else:
                 narrative = f"Scanned <b>{gene}</b> — Weak signal. No significant differential expression observed.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: {reasoning}</span>"
-                reward_expl = f"Small penalty ({reward:.1f}) for scanning a non-target to discourage random guessing."
+                reward_expl = f"Small penalty ({reward:.2f}) for scanning a non-target to discourage random guessing."
         elif a_type == 1:
             if is_hit:
-                narrative = f"qPCR validated <b>{gene}</b> — <span style='color:#059669;font-weight:600;'>Confirmed upregulation.</span> Confidence increased to {conf:.0%}.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: High-fidelity validation requested to confirm signal.</span>"
-                reward_expl = f"High positive reward (+{reward:.1f}) for successfully validating a true target."
+                narrative = f"qPCR validated <b>{gene}</b> — <span style='color:#059669;font-weight:600;'>Confirmed upregulation.</span> Confidence increased to {conf:.2%}.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: High-fidelity validation requested to confirm signal.</span>"
+                reward_expl = f"High positive reward (+{reward:.2f}) for successfully validating a true target."
             else:
                 narrative = f"qPCR on <b>{gene}</b> — Expression levels within normal range. Marginal confidence increase.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Attempted validation, but target did not show conclusive evidence.</span>"
-                reward_expl = f"Significant penalty ({reward:.1f}) for wasting expensive qPCR resources on a non-target."
+                reward_expl = f"Significant penalty ({reward:.2f}) for wasting expensive qPCR resources on a non-target."
         elif a_type == 2:
             if conf > conf_prev:
-                narrative = f"Refined hypothesis based on accumulated evidence. Confidence: {conf_prev:.0%} → <b>{conf:.0%}</b>.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Agent synthesized recent findings to update internal target probabilities.</span>"
-                reward_expl = f"Reward (+{reward:.1f}) for successfully increasing overall hypothesis confidence."
+                narrative = f"Refined hypothesis based on accumulated evidence. Confidence: {conf_prev:.2%} → <b>{conf:.2%}</b>.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Agent synthesized recent findings to update internal target probabilities.</span>"
+                reward_expl = f"Reward (+{reward:.2f}) for successfully increasing overall hypothesis confidence."
             else:
-                narrative = f"Attempted hypothesis refinement. Insufficient new evidence — confidence unchanged at {conf:.0%}.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Forced model update despite lacking new actionable data.</span>"
-                reward_expl = f"Penalty ({reward:.1f}) for redundant processing step without new information."
+                narrative = f"Attempted hypothesis refinement. Insufficient new evidence — confidence unchanged at {conf:.2%}.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Forced model update despite lacking new actionable data.</span>"
+                reward_expl = f"Penalty ({reward:.2f}) for redundant processing step without new information."
         elif a_type == 3:
             narrative = f"Reviewed literature for related gene networks. Search space narrowed.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Consulted Oracle to map known associations for current candidate pool.</span>"
-            reward_expl = f"Small reward (+{reward:.1f}) for gaining external structural priors."
+            reward_expl = f"Small reward (+{reward:.2f}) for gaining external structural priors."
         elif a_type == 4:
             narrative = f"Synthesized experimental data into knowledge graph. Network connections updated.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Integrating disconnected findings into a unified model.</span>"
-            reward_expl = f"Structural reward (+{reward:.1f}) based on increased graph density and connectivity."
+            reward_expl = f"Structural reward (+{reward:.2f}) based on increased graph density and connectivity."
         elif a_type == 5:
             if success:
-                narrative = f"<span style='color:#059669;font-weight:700;'>Submitted discovery with {conf:.0%} confidence — VALIDATED!</span><br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Confidence threshold met, finalizing episode.</span>"
-                reward_expl = f"Massive terminal reward (+{reward:.1f}) for successful final discovery."
+                narrative = f"<span style='color:#059669;font-weight:700;'>Submitted discovery with {conf:.2%} confidence — VALIDATED!</span><br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Confidence threshold met, finalizing episode.</span>"
+                reward_expl = f"Massive terminal reward (+{reward:.2f}) for successful final discovery."
             else:
-                narrative = f"Submitted discovery with {conf:.0%} confidence — did not meet validation threshold.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Premature submission or incorrect target selected.</span>"
-                reward_expl = f"Terminal penalty ({reward:.1f}) for failing validation."
+                narrative = f"Submitted discovery with {conf:.2%} confidence — did not meet validation threshold.<br><span style='font-size:11px;color:var(--body-text-color-subdued);'><em>Reasoning</em>: Premature submission or incorrect target selected.</span>"
+                reward_expl = f"Terminal penalty ({reward:.2f}) for failing validation."
         else:
             narrative = f"Action {a_type} executed."
-            reward_expl = f"Reward delta: {reward:.1f}"
+            reward_expl = f"Reward delta: {reward:.2f}"
 
         # Append reward explanation to narrative
         narrative += f"<br><span style='font-size:11px;color:#8b5cf6;'><em>Reward Signal</em>: {reward_expl}</span>"
@@ -459,7 +459,7 @@ def generate_story_html(data: dict | None, ep_idx: int = 0) -> str:
     timeline_items = ""
     for i, (step, phase, pcolor, alabel, icon, narrative, reward, conf) in enumerate(phases):
         is_last = i == len(phases) - 1
-        reward_badge = f'<span style="color:{"#059669" if reward > 0 else "#ef4444"};font-size:11px;font-weight:500;">{"+" if reward > 0 else ""}{reward:.1f}</span>'
+        reward_badge = f'<span style="color:{"#059669" if reward > 0 else "#ef4444"};font-size:11px;font-weight:500;">{"+" if reward > 0 else ""}{reward:.2f}</span>'
 
         timeline_items += f"""
         <div style="display:flex;gap:16px;position:relative;">
@@ -492,12 +492,12 @@ def generate_story_html(data: dict | None, ep_idx: int = 0) -> str:
     if success:
         outcome_bg = "#ecfdf5"
         outcome_border = "#059669"
-        outcome_text = f"Discovery Validated — Score: {score:.4f}"
+        outcome_text = f"Discovery Validated — Score: {score:.6f}"
         outcome_color = "#065f46"
     else:
         outcome_bg = "#fef2f2"
         outcome_border = "#ef4444"
-        outcome_text = f"Discovery Not Validated — Score: {score:.4f}"
+        outcome_text = f"Discovery Not Validated — Score: {score:.6f}"
         outcome_color = "#991b1b"
 
     targets_str = ", ".join(true_targets) if true_targets else "—"
@@ -512,7 +512,7 @@ def generate_story_html(data: dict | None, ep_idx: int = 0) -> str:
                     </h3>
                     <p style="margin:4px 0 0;font-size:13px;color:var(--body-text-color-subdued);">
                         Target genes: <span style="font-family:'JetBrains Mono',monospace;color:#6366f1;">{targets_str}</span>
-                        · {len(actions)} steps · Final confidence: {ep.get('final_confidence', 0):.0%}
+                        · {len(actions)} steps · Final confidence: {ep.get('final_confidence', 0):.2%}
                     </p>
                 </div>
                 <div style="background:{outcome_bg}20;border:1px solid {outcome_border}40;
@@ -685,7 +685,7 @@ def run_simulation(domain, difficulty, agent, episodes, max_steps,
                 tm = top_re.search(stripped)
                 if tm:
                     candidates = [g.strip().strip("'\"") for g in tm.group(1).split(",")]
-                    hypothesis = f"Top candidates: {', '.join(candidates[:3])} (conf={conf_val:.0%})"
+                    hypothesis = f"Top candidates: {', '.join(candidates[:3])} (conf={conf_val:.2%})"
 
                 # Parse KG nodes
                 km = kg_re.search(stripped)
@@ -705,7 +705,7 @@ def run_simulation(domain, difficulty, agent, episodes, max_steps,
                 log_msg += f'Executed <b>{action_name}</b>'
                 if target_gene != "—":
                     log_msg += f' on gene <b>{target_gene}</b> &rarr; <span class="log-badge {badge_type}">{badge or "DONE"}</span>'
-                log_msg += f' <span style="color:var(--body-text-color-subdued);font-size:10px;">conf:{conf_val:.3f} rew:{cur_st_reward:+.1f}</span>'
+                log_msg += f' <span style="color:var(--body-text-color-subdued);font-size:10px;">conf:{conf_val:.3f} rew:{cur_st_reward:+.2f}</span>'
                 log_msg += '</div>'
                 trace_entries.append(log_msg)
 
@@ -720,7 +720,7 @@ def run_simulation(domain, difficulty, agent, episodes, max_steps,
                 res_cls = "success" if ep_score > 0.5 else "failed"
                 res_msg = f'<div class="log-entry {res_cls}" style="font-weight:600;padding:8px 10px;margin-top:4px;">'
                 res_msg += f'RESULT: {"SUCCESS" if res_cls=="success" else "FAILED"} &middot; '
-                res_msg += f'Score: {ep_score:.3f} &middot; Reward: {ep_reward:+.1f}'
+                res_msg += f'Score: {ep_score:.6f} &middot; Reward: {ep_reward:+.2f}'
                 res_msg += '</div>'
                 trace_entries.append(res_msg)
 
@@ -765,7 +765,7 @@ def run_simulation(domain, difficulty, agent, episodes, max_steps,
     if data:
         m = data.get("metrics", {})
         final_msg = f'<div class="log-entry episode" style="color:#10b981;border-bottom:none;">'
-        final_msg += f'SIMULATION COMPLETE. Success Rate: {m.get("success_rate",0)*100:.1f}% Avg Score: {m.get("avg_score",0):.3f}'
+        final_msg += f'SIMULATION COMPLETE. Success Rate: {m.get("success_rate",0)*100:.1f}% Avg Score: {m.get("avg_score",0):.6f}'
         final_msg += '</div>'
         trace_entries.append(final_msg)
     else:

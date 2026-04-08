@@ -437,8 +437,8 @@ class GenomIQEnv:
             if self.hypothesis_confidence != old_conf:
                 self.hypothesis_history.append({
                     "step": self.step_count,
-                    "confidence": round(self.hypothesis_confidence, 3),
-                    "hypothesis": f"qPCR validated {gene_name} (conf={self.hypothesis_confidence:.0%})",
+                    "confidence": round(self.hypothesis_confidence, 6),
+                    "hypothesis": f"qPCR validated {gene_name} (conf={self.hypothesis_confidence:.2%})",
                 })
 
             if self.unknown_vars > 0:
@@ -481,7 +481,7 @@ class GenomIQEnv:
                 # Track hypothesis evolution
                 self.hypothesis_history.append({
                     "step": self.step_count,
-                    "confidence": round(self.hypothesis_confidence, 3),
+                    "confidence": round(self.hypothesis_confidence, 6),
                     "hypothesis": self.current_hypothesis,
                 })
 
@@ -699,7 +699,7 @@ class GenomIQEnv:
             task_name=self.task_name,
             domain=self.domain,
             step=self.step_count,
-            hypothesis_confidence=round(self.hypothesis_confidence, 3),
+            hypothesis_confidence=round(self.hypothesis_confidence, 6),
             experiments_done=self.experiments_done,
             last_result=self.last_result,
             numeric_signal=self.numeric_signal,

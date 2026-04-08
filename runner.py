@@ -77,7 +77,7 @@ class SimulationRunner:
                     "episode": episode_idx + 1,
                     "reward": round(episode_reward, 2),
                     "steps": steps,
-                    "score": round(final_score, 3),
+                    "score": final_score,
                     "success": success,
                     "final_confidence": observation.get("hypothesis_confidence", 0),
                     "true_targets": true_genes,
@@ -114,9 +114,9 @@ class SimulationRunner:
         confidences = [r["final_confidence"] for r in results]
 
         avg_reward = round(sum(rewards) / len(rewards) if rewards else 0, 2)
-        avg_score = round(sum(scores) / len(scores) if scores else 0, 3)
+        avg_score = round(sum(scores) / len(scores) if scores else 0, 6)
         avg_steps = round(sum(steps_list) / len(steps_list) if steps_list else 0, 1)
-        avg_conf = round(sum(confidences) / len(confidences) if confidences else 0, 3)
+        avg_conf = round(sum(confidences) / len(confidences) if confidences else 0, 6)
         max_score = round(max(scores), 3) if scores else 0
         min_score = round(min(scores), 3) if scores else 0
         max_reward = round(max(rewards), 2) if rewards else 0
