@@ -1,15 +1,15 @@
 agent:
   exploration: epsilon_greedy
   learning_rate: 0.0003
-  type: greedy
+  type: ppo
   use_claude_oracle: false
 constraints:
   cost_tier: mixed
   noise_level: 2.0
   time_limit: 0
 dataset:
-  name: ''
-  source: synthetic
+  name: cancer_gene_expression
+  source: preloaded
 prior_knowledge:
   associations: []
   literature_hints: []
@@ -22,8 +22,8 @@ rewards:
 scenario:
   difficulty: medium
   domain: gene_expression
-  max_steps: 50
-  num_episodes: 10
+  max_steps: 100
+  num_episodes: 25
   objective: Identify Key Regulator Genes
   seed: 42
 visualization:

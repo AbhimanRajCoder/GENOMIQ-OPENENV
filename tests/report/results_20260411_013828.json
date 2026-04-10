@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-04-11T01:38:28.556432",
+  "metrics": [
+    {
+      "name": "stdout_format",
+      "weight": 0.15,
+      "score": 0.0,
+      "weighted_score": 0.0,
+      "passed": false,
+      "details": "Failed to run inference: '_io.TextIOWrapper' object has no attribute 'environ'"
+    },
+    {
+      "name": "reward_quality",
+      "weight": 0.2,
+      "score": 0.0,
+      "weighted_score": 0.0,
+      "passed": false,
+      "details": "No reward data to analyze."
+    },
+    {
+      "name": "task_coverage",
+      "weight": 0.25,
+      "score": 100.0,
+      "weighted_score": 25.0,
+      "passed": true,
+      "details": "Detected 38 tasks. | Grader: Grader is deterministic and scores are within [0.0, 1.0]."
+    },
+    {
+      "name": "env_compliance",
+      "weight": 0.2,
+      "score": 100.0,
+      "weighted_score": 20.0,
+      "passed": true,
+      "details": "Environment is OpenEnv compliant."
+    },
+    {
+      "name": "docker_build",
+      "weight": 0.1,
+      "score": 100.0,
+      "weighted_score": 10.0,
+      "passed": true,
+      "details": "Docker build succeeded in 2.02s."
+    },
+    {
+      "name": "hf_space_ping",
+      "weight": 0.05,
+      "score": 100.0,
+      "weighted_score": 5.0,
+      "passed": true,
+      "details": "HF Space /reset returned 200 OK in 1.08s."
+    },
+    {
+      "name": "inference_contract",
+      "weight": 0.05,
+      "score": 60.0,
+      "weighted_score": 3.0,
+      "passed": false,
+      "details": "Contract issues: hf_token_no_default | Stdout format check failed: Failed to run inference: '_io.TextIOWrapper' object has no attribute 'environ'"
+    },
+    {
+      "name": "runtime_limits",
+      "weight": 0.0,
+      "score": 0.0,
+      "weighted_score": 0.0,
+      "passed": false,
+      "details": "Error running inference: '_io.TextIOWrapper' object has no attribute 'environ'"
+    }
+  ],
+  "total_score": 63.0,
+  "is_ready": false
+}

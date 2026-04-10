@@ -1,16 +1,16 @@
 {
   "run_metadata": {
-    "timestamp": "2026-04-08T10:33:00.096482",
-    "elapsed_seconds": 0.04,
+    "timestamp": "2026-04-11T01:12:26.626968",
+    "elapsed_seconds": 2.93,
     "domain": "gene_expression",
     "difficulty": "medium",
     "objective": "Identify Key Regulator Genes",
-    "agent_type": "greedy",
-    "num_episodes": 10,
-    "max_steps": 50,
+    "agent_type": "ppo",
+    "num_episodes": 25,
+    "max_steps": 100,
     "seed": 42,
-    "dataset_source": "synthetic",
-    "dataset_name": "",
+    "dataset_source": "preloaded",
+    "dataset_name": "cancer_gene_expression",
     "noise_level": 2.0,
     "cost_tier": "mixed",
     "prior_knowledge": {
@@ -20,87 +20,86 @@
     }
   },
   "metrics": {
-    "success_rate": 0.7,
-    "avg_reward": 34.9,
-    "avg_score": 0.649,
-    "avg_steps": 15.5,
-    "avg_confidence": 0.764,
-    "max_score": 0.88,
-    "min_score": 0.35,
-    "max_reward": 51.0,
-    "min_reward": 3.8,
+    "success_rate": 0.28,
+    "avg_reward": 29.32,
+    "avg_score": 0.571013,
+    "avg_steps": 24.4,
+    "avg_confidence": 0.639399,
+    "max_score": 0.915,
+    "min_score": 0.302,
+    "max_reward": 131.1,
+    "min_reward": -6.4,
     "total_successes": 7,
-    "total_failures": 3
+    "total_failures": 18
   },
   "gene_analysis": {
     "most_submitted_candidates": [
+      {
+        "gene": "BAX",
+        "count": 3
+      },
+      {
+        "gene": "HIF1A",
+        "count": 3
+      },
+      {
+        "gene": "FGFR2",
+        "count": 3
+      },
+      {
+        "gene": "CREB1",
+        "count": 3
+      },
+      {
+        "gene": "AKT1",
+        "count": 3
+      },
       {
         "gene": "RAD51",
         "count": 2
       },
       {
-        "gene": "ATM",
+        "gene": "CDK4",
         "count": 2
       },
       {
-        "gene": "TP53",
-        "count": 1
+        "gene": "RB1",
+        "count": 2
       },
       {
-        "gene": "PIK3CA",
-        "count": 1
+        "gene": "SNAI1",
+        "count": 2
       },
       {
-        "gene": "MAPK3",
-        "count": 1
-      },
-      {
-        "gene": "KLF4",
-        "count": 1
-      },
-      {
-        "gene": "NOTCH2",
-        "count": 1
-      },
-      {
-        "gene": "GATA1",
-        "count": 1
-      },
-      {
-        "gene": "CD40",
-        "count": 1
-      },
-      {
-        "gene": "CHEK2",
-        "count": 1
+        "gene": "CDH1",
+        "count": 2
       }
     ]
   },
   "episodes": [
     {
       "episode": 1,
-      "reward": 42.5,
-      "steps": 15,
-      "score": 0.696,
-      "success": true,
-      "final_confidence": 0.732,
+      "reward": 4.4,
+      "steps": 11,
+      "score": 0.521038111735665,
+      "success": false,
+      "final_confidence": 0.421857,
       "true_targets": [
-        "TP53",
-        "PIK3CA",
-        "ABL1"
+        "RAD51",
+        "SNAI1",
+        "MGMT"
       ],
       "submitted_candidates": [
-        "TP53",
-        "PIK3CA",
-        "MAPK3"
+        "RAD51",
+        "ABL1"
       ],
       "matrix_shape": [
         50,
-        3
+        4
       ],
-      "last_hint": "Conference abstract mentions MAPK3, though replication studies are needed.",
-      "kg_nodes": 3,
-      "experiments_done": 8,
+      "last_hint": "Published data indicates correlation between SNAI1 and the target condition.",
+      "kg_nodes": 6,
+      "experiments_done": 2,
       "action_history": [
         {
           "step": 1,
@@ -111,101 +110,73 @@
         },
         {
           "step": 2,
-          "action": 0,
+          "action": 3,
           "reward": 1.4,
-          "gene_tested": "TP53",
+          "gene_tested": "\u2014",
           "confidence": 0.1
         },
         {
           "step": 3,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "BRCA2",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.157715
         },
         {
           "step": 4,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "BRCA2",
-          "confidence": 0.1
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "RAD51",
+          "confidence": 0.307715
         },
         {
           "step": 5,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "MAPK3",
-          "confidence": 0.1
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "RAD51",
+          "confidence": 0.307715
         },
         {
           "step": 6,
           "action": 0,
           "reward": -2.1,
-          "gene_tested": "FGF2",
-          "confidence": 0.1
+          "gene_tested": "ABL1",
+          "confidence": 0.307715
         },
         {
           "step": 7,
           "action": 3,
           "reward": 1.4,
-          "gene_tested": "FGF2",
-          "confidence": 0.1
+          "gene_tested": "ABL1",
+          "confidence": 0.307715
         },
         {
           "step": 8,
-          "action": 0,
+          "action": 3,
           "reward": 1.4,
-          "gene_tested": "TP53",
-          "confidence": 0.1
+          "gene_tested": "ABL1",
+          "confidence": 0.307715
         },
         {
           "step": 9,
-          "action": 0,
+          "action": 3,
           "reward": 1.4,
-          "gene_tested": "PIK3CA",
-          "confidence": 0.1
+          "gene_tested": "ABL1",
+          "confidence": 0.307715
         },
         {
           "step": 10,
           "action": 2,
           "reward": 4.9,
-          "gene_tested": "PIK3CA",
-          "confidence": 0.185
+          "gene_tested": "ABL1",
+          "confidence": 0.421857
         },
         {
           "step": 11,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "PIK3CA",
-          "confidence": 0.298
-        },
-        {
-          "step": 12,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "PIK3CA",
-          "confidence": 0.432
-        },
-        {
-          "step": 13,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "TP53",
-          "confidence": 0.582
-        },
-        {
-          "step": 14,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "TP53",
-          "confidence": 0.732
-        },
-        {
-          "step": 15,
           "action": 5,
-          "reward": 19.9,
-          "gene_tested": "TP53",
-          "confidence": 0.732
+          "reward": -10.1,
+          "gene_tested": "ABL1",
+          "confidence": 0.421857
         }
       ],
       "hypothesis_history": [
@@ -215,197 +186,115 @@
           "hypothesis": "No hypothesis formed yet."
         },
         {
+          "step": 4,
+          "confidence": 0.307715,
+          "hypothesis": "qPCR validated RAD51 (conf=30.77%)"
+        },
+        {
           "step": 10,
-          "confidence": 0.185,
-          "hypothesis": "Top candidates: TP53, PIK3CA, FGF2 (conf=18%)"
-        },
-        {
-          "step": 11,
-          "confidence": 0.298,
-          "hypothesis": "Top candidates: TP53, PIK3CA, FGF2 (conf=30%)"
-        },
-        {
-          "step": 12,
-          "confidence": 0.432,
-          "hypothesis": "Top candidates: TP53, PIK3CA, FGF2 (conf=43%)"
-        },
-        {
-          "step": 13,
-          "confidence": 0.582,
-          "hypothesis": "qPCR validated TP53 (conf=58%)"
-        },
-        {
-          "step": 14,
-          "confidence": 0.732,
-          "hypothesis": "qPCR validated TP53 (conf=73%)"
+          "confidence": 0.421857,
+          "hypothesis": "Top candidates: RAD51, ABL1 (conf=42%)"
         }
       ],
       "knowledge_graph": {
         "nodes": [
-          "BRCA2",
-          "MAPK3",
-          "FGF2",
-          "TP53",
-          "PIK3CA"
+          "ABL1",
+          "RAD51"
         ],
         "edges": [
           {
-            "source": "BRCA2",
-            "target": "TP53",
+            "source": "ABL1",
+            "target": "RAD51",
             "weight": 1
-          },
-          {
-            "source": "BRCA2",
-            "target": "MAPK3",
-            "weight": 1
-          },
-          {
-            "source": "FGF2",
-            "target": "MAPK3",
-            "weight": 1
-          },
-          {
-            "source": "FGF2",
-            "target": "TP53",
-            "weight": 1
-          },
-          {
-            "source": "PIK3CA",
-            "target": "TP53",
-            "weight": 2
           }
         ]
       }
     },
     {
       "episode": 2,
-      "reward": 42.5,
-      "steps": 15,
-      "score": 0.697,
-      "success": true,
-      "final_confidence": 0.739,
+      "reward": -0.4,
+      "steps": 9,
+      "score": 0.4973645954131824,
+      "success": false,
+      "final_confidence": 0.27349,
       "true_targets": [
-        "KLF4",
-        "GATA1",
-        "CREB1"
+        "ABL1",
+        "CDK4",
+        "WNT1"
       ],
       "submitted_candidates": [
-        "KLF4",
-        "NOTCH2",
-        "GATA1"
+        "CDK4"
       ],
       "matrix_shape": [
         50,
-        3
+        4
       ],
-      "last_hint": "Recent study: CREB1 may be a key regulator in the observed phenotype.",
+      "last_hint": "Conference abstract mentions ERBB2, though replication studies are needed.",
       "kg_nodes": 3,
-      "experiments_done": 8,
+      "experiments_done": 3,
       "action_history": [
         {
           "step": 1,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
           "action": 3,
           "reward": 1.4,
           "gene_tested": "\u2014",
           "confidence": 0.1
         },
         {
-          "step": 2,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "GATA1",
-          "confidence": 0.1
-        },
-        {
           "step": 3,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "KLF4",
-          "confidence": 0.1
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "CDK4",
+          "confidence": 0.25
         },
         {
           "step": 4,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "KLF4",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "CDK4",
+          "confidence": 0.27349
         },
         {
           "step": 5,
           "action": 0,
-          "reward": -2.1,
-          "gene_tested": "GLUT1",
-          "confidence": 0.1
+          "reward": 1.4,
+          "gene_tested": "CDK4",
+          "confidence": 0.27349
         },
         {
           "step": 6,
           "action": 0,
-          "reward": -2.1,
-          "gene_tested": "NOTCH2",
-          "confidence": 0.1
+          "reward": 1.4,
+          "gene_tested": "CDK4",
+          "confidence": 0.27349
         },
         {
           "step": 7,
           "action": 3,
           "reward": 1.4,
-          "gene_tested": "NOTCH2",
-          "confidence": 0.1
+          "gene_tested": "CDK4",
+          "confidence": 0.27349
         },
         {
           "step": 8,
-          "action": 0,
+          "action": 3,
           "reward": 1.4,
-          "gene_tested": "KLF4",
-          "confidence": 0.1
+          "gene_tested": "CDK4",
+          "confidence": 0.27349
         },
         {
           "step": 9,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "NOTCH2",
-          "confidence": 0.1
-        },
-        {
-          "step": 10,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "NOTCH2",
-          "confidence": 0.22
-        },
-        {
-          "step": 11,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "NOTCH2",
-          "confidence": 0.312
-        },
-        {
-          "step": 12,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "NOTCH2",
-          "confidence": 0.439
-        },
-        {
-          "step": 13,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "KLF4",
-          "confidence": 0.589
-        },
-        {
-          "step": 14,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "KLF4",
-          "confidence": 0.739
-        },
-        {
-          "step": 15,
           "action": 5,
-          "reward": 19.9,
-          "gene_tested": "KLF4",
-          "confidence": 0.739
+          "reward": -10.1,
+          "gene_tested": "CDK4",
+          "confidence": 0.27349
         }
       ],
       "hypothesis_history": [
@@ -415,191 +304,742 @@
           "hypothesis": "No hypothesis formed yet."
         },
         {
-          "step": 10,
-          "confidence": 0.22,
-          "hypothesis": "Top candidates: KLF4, NOTCH2, GATA1 (conf=22%)"
-        },
-        {
-          "step": 11,
-          "confidence": 0.312,
-          "hypothesis": "Top candidates: KLF4, NOTCH2, GATA1 (conf=31%)"
-        },
-        {
-          "step": 12,
-          "confidence": 0.439,
-          "hypothesis": "Top candidates: KLF4, NOTCH2, GATA1 (conf=44%)"
-        },
-        {
-          "step": 13,
-          "confidence": 0.589,
-          "hypothesis": "qPCR validated KLF4 (conf=59%)"
-        },
-        {
-          "step": 14,
-          "confidence": 0.739,
-          "hypothesis": "qPCR validated KLF4 (conf=74%)"
+          "step": 3,
+          "confidence": 0.25,
+          "hypothesis": "qPCR validated CDK4 (conf=25.00%)"
         }
       ],
       "knowledge_graph": {
         "nodes": [
-          "GLUT1",
-          "NOTCH2",
-          "KLF4",
-          "GATA1"
+          "CDK4"
         ],
-        "edges": [
-          {
-            "source": "GATA1",
-            "target": "KLF4",
-            "weight": 1
-          },
-          {
-            "source": "GLUT1",
-            "target": "KLF4",
-            "weight": 1
-          },
-          {
-            "source": "GLUT1",
-            "target": "NOTCH2",
-            "weight": 1
-          },
-          {
-            "source": "KLF4",
-            "target": "NOTCH2",
-            "weight": 3
-          }
-        ]
+        "edges": []
       }
     },
     {
       "episode": 3,
-      "reward": 47.5,
-      "steps": 15,
-      "score": 0.88,
-      "success": true,
-      "final_confidence": 0.822,
+      "reward": 53.5,
+      "steps": 100,
+      "score": 0.5463333333333333,
+      "success": false,
+      "final_confidence": 1.0,
       "true_targets": [
-        "CHEK2",
-        "SNAI1",
-        "CD40"
+        "CREB1",
+        "RB1",
+        "IDH1"
       ],
       "submitted_candidates": [
-        "CD40",
-        "CHEK2",
-        "SNAI1"
+        "RB1",
+        "IDH1",
+        "BCL2"
       ],
       "matrix_shape": [
         50,
-        3
+        4
       ],
-      "last_hint": "Published data indicates correlation between SNAI1 and the target condition.",
-      "kg_nodes": 3,
-      "experiments_done": 9,
+      "last_hint": "Recent study: IDH1 may be a key regulator in the observed phenotype.",
+      "kg_nodes": 19,
+      "experiments_done": 67,
       "action_history": [
         {
           "step": 1,
-          "action": 3,
-          "reward": 1.4,
+          "action": 2,
+          "reward": 0.4,
           "gene_tested": "\u2014",
-          "confidence": 0.1
+          "confidence": 0.124795
         },
         {
           "step": 2,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "ETS1",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.172888
         },
         {
           "step": 3,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "CD40",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.194651
         },
         {
           "step": 4,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "CD40",
-          "confidence": 0.1
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.244651
         },
         {
           "step": 5,
           "action": 0,
-          "reward": 1.4,
-          "gene_tested": "CHEK2",
-          "confidence": 0.1
+          "reward": -2.1,
+          "gene_tested": "WNT1",
+          "confidence": 0.244651
         },
         {
           "step": 6,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "CHEK2",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.340043
         },
         {
           "step": 7,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "CHEK2",
-          "confidence": 0.1
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.390043
         },
         {
           "step": 8,
-          "action": 0,
+          "action": 3,
           "reward": 1.4,
-          "gene_tested": "SNAI1",
-          "confidence": 0.1
+          "gene_tested": "NOTCH1",
+          "confidence": 0.390043
         },
         {
           "step": 9,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "CD40",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.487501
         },
         {
           "step": 10,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "CD40",
-          "confidence": 0.279
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.487501
         },
         {
           "step": 11,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "CD40",
-          "confidence": 0.372
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.487501
         },
         {
           "step": 12,
           "action": 1,
-          "reward": 2.9,
-          "gene_tested": "CD40",
-          "confidence": 0.522
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.537501
         },
         {
           "step": 13,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "CD40",
-          "confidence": 0.672
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.537501
         },
         {
           "step": 14,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "CD40",
-          "confidence": 0.822
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.537501
         },
         {
           "step": 15,
-          "action": 5,
-          "reward": 19.9,
-          "gene_tested": "CD40",
-          "confidence": 0.822
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.621045
+        },
+        {
+          "step": 16,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.671045
+        },
+        {
+          "step": 17,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.671045
+        },
+        {
+          "step": 18,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "ABL1",
+          "confidence": 0.671045
+        },
+        {
+          "step": 19,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "BCL2",
+          "confidence": 0.671045
+        },
+        {
+          "step": 20,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "MSH2",
+          "confidence": 0.671045
+        },
+        {
+          "step": 21,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MSH2",
+          "confidence": 0.671045
+        },
+        {
+          "step": 22,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MSH2",
+          "confidence": 0.671045
+        },
+        {
+          "step": 23,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MSH2",
+          "confidence": 0.671045
+        },
+        {
+          "step": 24,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MSH2",
+          "confidence": 0.671045
+        },
+        {
+          "step": 25,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "MSH2",
+          "confidence": 0.826118
+        },
+        {
+          "step": 26,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "MSH2",
+          "confidence": 0.967333
+        },
+        {
+          "step": 27,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.967333
+        },
+        {
+          "step": 28,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "PARP1",
+          "confidence": 0.967333
+        },
+        {
+          "step": 29,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "PARP1",
+          "confidence": 0.967333
+        },
+        {
+          "step": 30,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 31,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 32,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 33,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 34,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 35,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 36,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 37,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "RB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 38,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 39,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "RAD51",
+          "confidence": 1.0
+        },
+        {
+          "step": 40,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 41,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 42,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "RB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 43,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "MDM2",
+          "confidence": 1.0
+        },
+        {
+          "step": 44,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 45,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 46,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 47,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 48,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 49,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 50,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 51,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 52,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "IDH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 53,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "COL1A1",
+          "confidence": 1.0
+        },
+        {
+          "step": 54,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "PTEN",
+          "confidence": 1.0
+        },
+        {
+          "step": 55,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "PTEN",
+          "confidence": 1.0
+        },
+        {
+          "step": 56,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 57,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "BCL2",
+          "confidence": 1.0
+        },
+        {
+          "step": 58,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 59,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "CCNB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 60,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 61,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 62,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 63,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 64,
+          "action": 1,
+          "reward": -0.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 65,
+          "action": 1,
+          "reward": -0.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 66,
+          "action": 0,
+          "reward": 0.4,
+          "gene_tested": "CREB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 67,
+          "action": 1,
+          "reward": -0.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 68,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 69,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 70,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 71,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 72,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 73,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 74,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 75,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 76,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 77,
+          "action": 1,
+          "reward": -0.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 78,
+          "action": 1,
+          "reward": -0.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 79,
+          "action": 1,
+          "reward": -0.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 80,
+          "action": 1,
+          "reward": -0.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 81,
+          "action": 1,
+          "reward": -0.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 82,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 83,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 84,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 85,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 86,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 87,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 88,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 89,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 90,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 91,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 92,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 93,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 94,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 95,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 96,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 97,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 98,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 99,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
+        },
+        {
+          "step": 100,
+          "action": 1,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 1.0
         }
       ],
       "hypothesis_history": [
@@ -609,86 +1049,230 @@
           "hypothesis": "No hypothesis formed yet."
         },
         {
-          "step": 10,
-          "confidence": 0.279,
-          "hypothesis": "Top candidates: CD40, CHEK2, SNAI1 (conf=28%)"
+          "step": 4,
+          "confidence": 0.244651,
+          "hypothesis": "qPCR validated NOTCH1 (conf=24.47%)"
         },
         {
-          "step": 11,
-          "confidence": 0.372,
-          "hypothesis": "Top candidates: CD40, CHEK2, SNAI1 (conf=37%)"
+          "step": 6,
+          "confidence": 0.340043,
+          "hypothesis": "Top candidates: NOTCH1, WNT1 (conf=34%)"
+        },
+        {
+          "step": 7,
+          "confidence": 0.390043,
+          "hypothesis": "qPCR validated NOTCH1 (conf=39.00%)"
+        },
+        {
+          "step": 9,
+          "confidence": 0.487501,
+          "hypothesis": "Top candidates: NOTCH1, WNT1 (conf=49%)"
         },
         {
           "step": 12,
-          "confidence": 0.522,
-          "hypothesis": "qPCR validated CD40 (conf=52%)"
+          "confidence": 0.537501,
+          "hypothesis": "qPCR validated NOTCH1 (conf=53.75%)"
         },
         {
-          "step": 13,
-          "confidence": 0.672,
-          "hypothesis": "qPCR validated CD40 (conf=67%)"
+          "step": 15,
+          "confidence": 0.621045,
+          "hypothesis": "Top candidates: NOTCH1, WNT1 (conf=62%)"
         },
         {
-          "step": 14,
-          "confidence": 0.822,
-          "hypothesis": "qPCR validated CD40 (conf=82%)"
+          "step": 16,
+          "confidence": 0.671045,
+          "hypothesis": "qPCR validated NOTCH1 (conf=67.10%)"
+        },
+        {
+          "step": 25,
+          "confidence": 0.826118,
+          "hypothesis": "Top candidates: NOTCH1, BCL2, WNT1 (conf=83%)"
+        },
+        {
+          "step": 26,
+          "confidence": 0.967333,
+          "hypothesis": "Top candidates: NOTCH1, BCL2, WNT1 (conf=97%)"
+        },
+        {
+          "step": 30,
+          "confidence": 1.0,
+          "hypothesis": "qPCR validated NOTCH1 (conf=100.00%)"
+        },
+        {
+          "step": 31,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: NOTCH1, CREB1, BCL2 (conf=100%)"
+        },
+        {
+          "step": 33,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: NOTCH1, CREB1, BCL2 (conf=100%)"
+        },
+        {
+          "step": 34,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: NOTCH1, CREB1, BCL2 (conf=100%)"
+        },
+        {
+          "step": 35,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: NOTCH1, CREB1, BCL2 (conf=100%)"
+        },
+        {
+          "step": 46,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: NOTCH1, RB1, CREB1 (conf=100%)"
+        },
+        {
+          "step": 49,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: NOTCH1, RB1, CREB1 (conf=100%)"
+        },
+        {
+          "step": 55,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: NOTCH1, RB1, CREB1 (conf=100%)"
+        },
+        {
+          "step": 69,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: NOTCH1, RB1, CREB1 (conf=100%)"
         }
       ],
       "knowledge_graph": {
         "nodes": [
-          "CD40",
-          "CHEK2",
-          "SNAI1",
-          "ETS1"
+          "RB1",
+          "IDH1",
+          "PTEN",
+          "CCNB1",
+          "ABL1",
+          "MSH2",
+          "MDM2",
+          "COL1A1",
+          "PARP1",
+          "WNT1",
+          "RAD51",
+          "NOTCH1",
+          "CREB1",
+          "BCL2"
         ],
         "edges": [
           {
-            "source": "CD40",
-            "target": "ETS1",
+            "source": "NOTCH1",
+            "target": "WNT1",
+            "weight": 2
+          },
+          {
+            "source": "ABL1",
+            "target": "NOTCH1",
             "weight": 1
           },
           {
-            "source": "CD40",
-            "target": "CHEK2",
+            "source": "ABL1",
+            "target": "BCL2",
             "weight": 1
           },
           {
-            "source": "CHEK2",
-            "target": "SNAI1",
+            "source": "BCL2",
+            "target": "MSH2",
             "weight": 1
           },
           {
-            "source": "CD40",
-            "target": "SNAI1",
+            "source": "CREB1",
+            "target": "MSH2",
             "weight": 1
+          },
+          {
+            "source": "CREB1",
+            "target": "PARP1",
+            "weight": 1
+          },
+          {
+            "source": "NOTCH1",
+            "target": "PARP1",
+            "weight": 1
+          },
+          {
+            "source": "NOTCH1",
+            "target": "RB1",
+            "weight": 3
+          },
+          {
+            "source": "NOTCH1",
+            "target": "RAD51",
+            "weight": 2
+          },
+          {
+            "source": "MDM2",
+            "target": "RB1",
+            "weight": 1
+          },
+          {
+            "source": "MDM2",
+            "target": "NOTCH1",
+            "weight": 1
+          },
+          {
+            "source": "IDH1",
+            "target": "NOTCH1",
+            "weight": 1
+          },
+          {
+            "source": "COL1A1",
+            "target": "IDH1",
+            "weight": 1
+          },
+          {
+            "source": "COL1A1",
+            "target": "PTEN",
+            "weight": 1
+          },
+          {
+            "source": "NOTCH1",
+            "target": "PTEN",
+            "weight": 1
+          },
+          {
+            "source": "BCL2",
+            "target": "NOTCH1",
+            "weight": 2
+          },
+          {
+            "source": "CCNB1",
+            "target": "NOTCH1",
+            "weight": 2
+          },
+          {
+            "source": "CREB1",
+            "target": "NOTCH1",
+            "weight": 2
           }
         ]
       }
     },
     {
       "episode": 4,
-      "reward": 49.5,
-      "steps": 15,
-      "score": 0.709,
-      "success": true,
-      "final_confidence": 0.797,
+      "reward": 3.4,
+      "steps": 11,
+      "score": 0.5117733511394942,
+      "success": false,
+      "final_confidence": 0.375533,
       "true_targets": [
-        "RAF1",
-        "CTNNB1",
-        "COL1A1"
+        "MSH2",
+        "SNAI1",
+        "IDH1"
       ],
       "submitted_candidates": [
-        "RAF1",
-        "COL1A1",
-        "TET1"
+        "SNAI1",
+        "CDH1"
       ],
       "matrix_shape": [
         50,
-        3
+        4
       ],
-      "last_hint": "Published data indicates correlation between RAF1 and the target condition.",
+      "last_hint": "Conference abstract mentions WNT1, though replication studies are needed.",
       "kg_nodes": 3,
-      "experiments_done": 8,
+      "experiments_done": 2,
       "action_history": [
         {
           "step": 1,
@@ -699,101 +1283,73 @@
         },
         {
           "step": 2,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "TET1",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.13915
         },
         {
           "step": 3,
-          "action": 0,
+          "action": 3,
           "reward": 1.4,
-          "gene_tested": "RAF1",
-          "confidence": 0.1
+          "gene_tested": "\u2014",
+          "confidence": 0.13915
         },
         {
           "step": 4,
-          "action": 3,
+          "action": 0,
           "reward": 1.4,
-          "gene_tested": "RAF1",
-          "confidence": 0.1
+          "gene_tested": "SNAI1",
+          "confidence": 0.13915
         },
         {
           "step": 5,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "RAF1",
-          "confidence": 0.1
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "SNAI1",
+          "confidence": 0.13915
         },
         {
           "step": 6,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "RAF1",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "SNAI1",
+          "confidence": 0.185283
         },
         {
           "step": 7,
           "action": 3,
           "reward": 1.4,
-          "gene_tested": "RAF1",
-          "confidence": 0.1
+          "gene_tested": "SNAI1",
+          "confidence": 0.185283
         },
         {
           "step": 8,
           "action": 0,
-          "reward": 1.4,
-          "gene_tested": "COL1A1",
-          "confidence": 0.1
+          "reward": -2.1,
+          "gene_tested": "CDH1",
+          "confidence": 0.185283
         },
         {
           "step": 9,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "COL1A1",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "CDH1",
+          "confidence": 0.269592
         },
         {
           "step": 10,
           "action": 2,
           "reward": 4.9,
-          "gene_tested": "COL1A1",
-          "confidence": 0.202
+          "gene_tested": "CDH1",
+          "confidence": 0.375533
         },
         {
           "step": 11,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "COL1A1",
-          "confidence": 0.341
-        },
-        {
-          "step": 12,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "COL1A1",
-          "confidence": 0.497
-        },
-        {
-          "step": 13,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "RAF1",
-          "confidence": 0.647
-        },
-        {
-          "step": 14,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "RAF1",
-          "confidence": 0.797
-        },
-        {
-          "step": 15,
           "action": 5,
-          "reward": 19.9,
-          "gene_tested": "RAF1",
-          "confidence": 0.797
+          "reward": -10.1,
+          "gene_tested": "CDH1",
+          "confidence": 0.375533
         }
       ],
       "hypothesis_history": [
@@ -803,867 +1359,53 @@
           "hypothesis": "No hypothesis formed yet."
         },
         {
+          "step": 9,
+          "confidence": 0.269592,
+          "hypothesis": "Top candidates: SNAI1, CDH1 (conf=27%)"
+        },
+        {
           "step": 10,
-          "confidence": 0.202,
-          "hypothesis": "Top candidates: RAF1, COL1A1, TET1 (conf=20%)"
-        },
-        {
-          "step": 11,
-          "confidence": 0.341,
-          "hypothesis": "Top candidates: RAF1, COL1A1, TET1 (conf=34%)"
-        },
-        {
-          "step": 12,
-          "confidence": 0.497,
-          "hypothesis": "Top candidates: RAF1, COL1A1, TET1 (conf=50%)"
-        },
-        {
-          "step": 13,
-          "confidence": 0.647,
-          "hypothesis": "qPCR validated RAF1 (conf=65%)"
-        },
-        {
-          "step": 14,
-          "confidence": 0.797,
-          "hypothesis": "qPCR validated RAF1 (conf=80%)"
+          "confidence": 0.375533,
+          "hypothesis": "Top candidates: SNAI1, CDH1 (conf=38%)"
         }
       ],
       "knowledge_graph": {
         "nodes": [
-          "TET1",
-          "RAF1",
-          "COL1A1"
+          "CDH1",
+          "SNAI1"
         ],
         "edges": [
           {
-            "source": "RAF1",
-            "target": "TET1",
+            "source": "CDH1",
+            "target": "SNAI1",
             "weight": 1
-          },
-          {
-            "source": "COL1A1",
-            "target": "RAF1",
-            "weight": 2
           }
         ]
       }
     },
     {
       "episode": 5,
-      "reward": 3.8,
-      "steps": 17,
-      "score": 0.35,
-      "success": false,
-      "final_confidence": 0.731,
-      "true_targets": [
-        "CDKN2A",
-        "JAK2",
-        "RHOA"
-      ],
-      "submitted_candidates": [
-        "RAD50",
-        "UBC",
-        "RAD51"
-      ],
-      "matrix_shape": [
-        50,
-        3
-      ],
-      "last_hint": "Literature suggests RHOA shows elevated expression (mean=85.1) in this pathway.",
-      "kg_nodes": 3,
-      "experiments_done": 9,
-      "action_history": [
-        {
-          "step": 1,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "\u2014",
-          "confidence": 0.1
-        },
-        {
-          "step": 2,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "RAD50",
-          "confidence": 0.1
-        },
-        {
-          "step": 3,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "UBC",
-          "confidence": 0.1
-        },
-        {
-          "step": 4,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "UBC",
-          "confidence": 0.1
-        },
-        {
-          "step": 5,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "RAD50",
-          "confidence": 0.1
-        },
-        {
-          "step": 6,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "RAD51",
-          "confidence": 0.1
-        },
-        {
-          "step": 7,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "RAD51",
-          "confidence": 0.1
-        },
-        {
-          "step": 8,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "CPT1A",
-          "confidence": 0.1
-        },
-        {
-          "step": 9,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "RAD50",
-          "confidence": 0.1
-        },
-        {
-          "step": 10,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "RAD50",
-          "confidence": 0.183
-        },
-        {
-          "step": 11,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "RAD50",
-          "confidence": 0.335
-        },
-        {
-          "step": 12,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "RAD50",
-          "confidence": 0.426
-        },
-        {
-          "step": 13,
-          "action": 1,
-          "reward": 0.9,
-          "gene_tested": "RAD50",
-          "confidence": 0.476
-        },
-        {
-          "step": 14,
-          "action": 1,
-          "reward": 0.9,
-          "gene_tested": "RAD50",
-          "confidence": 0.526
-        },
-        {
-          "step": 15,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "RAD50",
-          "confidence": 0.681
-        },
-        {
-          "step": 16,
-          "action": 1,
-          "reward": 0.9,
-          "gene_tested": "RAD50",
-          "confidence": 0.731
-        },
-        {
-          "step": 17,
-          "action": 5,
-          "reward": -10.1,
-          "gene_tested": "RAD50",
-          "confidence": 0.731
-        }
-      ],
-      "hypothesis_history": [
-        {
-          "step": 0,
-          "confidence": 0.1,
-          "hypothesis": "No hypothesis formed yet."
-        },
-        {
-          "step": 10,
-          "confidence": 0.183,
-          "hypothesis": "Top candidates: RAD50, RAD51, UBC (conf=18%)"
-        },
-        {
-          "step": 11,
-          "confidence": 0.335,
-          "hypothesis": "Top candidates: RAD50, RAD51, UBC (conf=34%)"
-        },
-        {
-          "step": 12,
-          "confidence": 0.426,
-          "hypothesis": "Top candidates: RAD50, RAD51, UBC (conf=43%)"
-        },
-        {
-          "step": 13,
-          "confidence": 0.476,
-          "hypothesis": "qPCR validated RAD50 (conf=48%)"
-        },
-        {
-          "step": 14,
-          "confidence": 0.526,
-          "hypothesis": "qPCR validated RAD50 (conf=53%)"
-        },
-        {
-          "step": 15,
-          "confidence": 0.681,
-          "hypothesis": "Top candidates: RAD50, RAD51, UBC (conf=68%)"
-        },
-        {
-          "step": 16,
-          "confidence": 0.731,
-          "hypothesis": "qPCR validated RAD50 (conf=73%)"
-        }
-      ],
-      "knowledge_graph": {
-        "nodes": [
-          "UBC",
-          "CPT1A",
-          "RAD50",
-          "RAD51"
-        ],
-        "edges": [
-          {
-            "source": "RAD50",
-            "target": "UBC",
-            "weight": 2
-          },
-          {
-            "source": "RAD50",
-            "target": "RAD51",
-            "weight": 1
-          },
-          {
-            "source": "CPT1A",
-            "target": "RAD51",
-            "weight": 1
-          },
-          {
-            "source": "CPT1A",
-            "target": "RAD50",
-            "weight": 1
-          }
-        ]
-      }
-    },
-    {
-      "episode": 6,
-      "reward": 42.5,
-      "steps": 15,
-      "score": 0.712,
+      "reward": 67.3,
+      "steps": 27,
+      "score": 0.915,
       "success": true,
-      "final_confidence": 0.814,
+      "final_confidence": 1.0,
       "true_targets": [
         "PIK3CA",
-        "ATM",
-        "SRC"
+        "GATA1",
+        "RB1"
       ],
       "submitted_candidates": [
-        "ATM",
-        "CD28",
-        "SRC"
+        "GATA1",
+        "RB1",
+        "PIK3CA"
       ],
       "matrix_shape": [
         50,
-        3
+        4
       ],
-      "last_hint": "Published data indicates correlation between SRC and the target condition.",
-      "kg_nodes": 3,
-      "experiments_done": 8,
-      "action_history": [
-        {
-          "step": 1,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "\u2014",
-          "confidence": 0.1
-        },
-        {
-          "step": 2,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "ATM",
-          "confidence": 0.1
-        },
-        {
-          "step": 3,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "LEF1",
-          "confidence": 0.1
-        },
-        {
-          "step": 4,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "LEF1",
-          "confidence": 0.1
-        },
-        {
-          "step": 5,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "GLUT1",
-          "confidence": 0.1
-        },
-        {
-          "step": 6,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "ATM",
-          "confidence": 0.1
-        },
-        {
-          "step": 7,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "ATM",
-          "confidence": 0.1
-        },
-        {
-          "step": 8,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "CD28",
-          "confidence": 0.1
-        },
-        {
-          "step": 9,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "SRC",
-          "confidence": 0.1
-        },
-        {
-          "step": 10,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "SRC",
-          "confidence": 0.227
-        },
-        {
-          "step": 11,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "SRC",
-          "confidence": 0.337
-        },
-        {
-          "step": 12,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "SRC",
-          "confidence": 0.514
-        },
-        {
-          "step": 13,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "ATM",
-          "confidence": 0.664
-        },
-        {
-          "step": 14,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "ATM",
-          "confidence": 0.814
-        },
-        {
-          "step": 15,
-          "action": 5,
-          "reward": 19.9,
-          "gene_tested": "ATM",
-          "confidence": 0.814
-        }
-      ],
-      "hypothesis_history": [
-        {
-          "step": 0,
-          "confidence": 0.1,
-          "hypothesis": "No hypothesis formed yet."
-        },
-        {
-          "step": 10,
-          "confidence": 0.227,
-          "hypothesis": "Top candidates: ATM, LEF1, SRC (conf=23%)"
-        },
-        {
-          "step": 11,
-          "confidence": 0.337,
-          "hypothesis": "Top candidates: ATM, LEF1, SRC (conf=34%)"
-        },
-        {
-          "step": 12,
-          "confidence": 0.514,
-          "hypothesis": "Top candidates: ATM, LEF1, SRC (conf=51%)"
-        },
-        {
-          "step": 13,
-          "confidence": 0.664,
-          "hypothesis": "qPCR validated ATM (conf=66%)"
-        },
-        {
-          "step": 14,
-          "confidence": 0.814,
-          "hypothesis": "qPCR validated ATM (conf=81%)"
-        }
-      ],
-      "knowledge_graph": {
-        "nodes": [
-          "LEF1",
-          "ATM",
-          "GLUT1",
-          "SRC",
-          "CD28"
-        ],
-        "edges": [
-          {
-            "source": "ATM",
-            "target": "LEF1",
-            "weight": 1
-          },
-          {
-            "source": "GLUT1",
-            "target": "LEF1",
-            "weight": 1
-          },
-          {
-            "source": "ATM",
-            "target": "GLUT1",
-            "weight": 1
-          },
-          {
-            "source": "ATM",
-            "target": "CD28",
-            "weight": 1
-          },
-          {
-            "source": "CD28",
-            "target": "SRC",
-            "weight": 1
-          },
-          {
-            "source": "ATM",
-            "target": "SRC",
-            "weight": 1
-          }
-        ]
-      }
-    },
-    {
-      "episode": 7,
-      "reward": 16.0,
-      "steps": 15,
-      "score": 0.529,
-      "success": false,
-      "final_confidence": 0.734,
-      "true_targets": [
-        "ATM",
-        "AKT1",
-        "TCF7"
-      ],
-      "submitted_candidates": [
-        "ATM",
-        "MSH2"
-      ],
-      "matrix_shape": [
-        50,
-        3
-      ],
-      "last_hint": "Published data indicates correlation between AKT1 and the target condition.",
-      "kg_nodes": 3,
-      "experiments_done": 8,
-      "action_history": [
-        {
-          "step": 1,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "\u2014",
-          "confidence": 0.1
-        },
-        {
-          "step": 2,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "ATM",
-          "confidence": 0.1
-        },
-        {
-          "step": 3,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "ATM",
-          "confidence": 0.1
-        },
-        {
-          "step": 4,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "ATM",
-          "confidence": 0.1
-        },
-        {
-          "step": 5,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "ATM",
-          "confidence": 0.1
-        },
-        {
-          "step": 6,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "ATM",
-          "confidence": 0.1
-        },
-        {
-          "step": 7,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "ATM",
-          "confidence": 0.1
-        },
-        {
-          "step": 8,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "MSH2",
-          "confidence": 0.1
-        },
-        {
-          "step": 9,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "MSH2",
-          "confidence": 0.1
-        },
-        {
-          "step": 10,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "MSH2",
-          "confidence": 0.208
-        },
-        {
-          "step": 11,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "MSH2",
-          "confidence": 0.291
-        },
-        {
-          "step": 12,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "MSH2",
-          "confidence": 0.434
-        },
-        {
-          "step": 13,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "ATM",
-          "confidence": 0.584
-        },
-        {
-          "step": 14,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "ATM",
-          "confidence": 0.734
-        },
-        {
-          "step": 15,
-          "action": 5,
-          "reward": -10.1,
-          "gene_tested": "ATM",
-          "confidence": 0.734
-        }
-      ],
-      "hypothesis_history": [
-        {
-          "step": 0,
-          "confidence": 0.1,
-          "hypothesis": "No hypothesis formed yet."
-        },
-        {
-          "step": 10,
-          "confidence": 0.208,
-          "hypothesis": "Top candidates: ATM, MSH2 (conf=21%)"
-        },
-        {
-          "step": 11,
-          "confidence": 0.291,
-          "hypothesis": "Top candidates: ATM, MSH2 (conf=29%)"
-        },
-        {
-          "step": 12,
-          "confidence": 0.434,
-          "hypothesis": "Top candidates: ATM, MSH2 (conf=43%)"
-        },
-        {
-          "step": 13,
-          "confidence": 0.584,
-          "hypothesis": "qPCR validated ATM (conf=58%)"
-        },
-        {
-          "step": 14,
-          "confidence": 0.734,
-          "hypothesis": "qPCR validated ATM (conf=73%)"
-        }
-      ],
-      "knowledge_graph": {
-        "nodes": [
-          "MSH2",
-          "ATM"
-        ],
-        "edges": [
-          {
-            "source": "ATM",
-            "target": "MSH2",
-            "weight": 2
-          }
-        ]
-      }
-    },
-    {
-      "episode": 8,
-      "reward": 46.0,
-      "steps": 15,
-      "score": 0.692,
-      "success": true,
-      "final_confidence": 0.715,
-      "true_targets": [
-        "RAD51",
-        "XIAP",
-        "MDM2"
-      ],
-      "submitted_candidates": [
-        "RAD51",
-        "XIAP",
-        "CDC25A"
-      ],
-      "matrix_shape": [
-        50,
-        3
-      ],
-      "last_hint": "Preliminary evidence links SRC to the pathway, but results are inconclusive.",
-      "kg_nodes": 3,
-      "experiments_done": 8,
-      "action_history": [
-        {
-          "step": 1,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "\u2014",
-          "confidence": 0.1
-        },
-        {
-          "step": 2,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "RAD51",
-          "confidence": 0.1
-        },
-        {
-          "step": 3,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "RAD51",
-          "confidence": 0.1
-        },
-        {
-          "step": 4,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "RAD51",
-          "confidence": 0.1
-        },
-        {
-          "step": 5,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "CDC25A",
-          "confidence": 0.1
-        },
-        {
-          "step": 6,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "XIAP",
-          "confidence": 0.1
-        },
-        {
-          "step": 7,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "XIAP",
-          "confidence": 0.1
-        },
-        {
-          "step": 8,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "IL10",
-          "confidence": 0.1
-        },
-        {
-          "step": 9,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "XIAP",
-          "confidence": 0.1
-        },
-        {
-          "step": 10,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "XIAP",
-          "confidence": 0.204
-        },
-        {
-          "step": 11,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "XIAP",
-          "confidence": 0.323
-        },
-        {
-          "step": 12,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "XIAP",
-          "confidence": 0.415
-        },
-        {
-          "step": 13,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "RAD51",
-          "confidence": 0.565
-        },
-        {
-          "step": 14,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "RAD51",
-          "confidence": 0.715
-        },
-        {
-          "step": 15,
-          "action": 5,
-          "reward": 19.9,
-          "gene_tested": "RAD51",
-          "confidence": 0.715
-        }
-      ],
-      "hypothesis_history": [
-        {
-          "step": 0,
-          "confidence": 0.1,
-          "hypothesis": "No hypothesis formed yet."
-        },
-        {
-          "step": 10,
-          "confidence": 0.204,
-          "hypothesis": "Top candidates: RAD51, XIAP, CDC25A (conf=20%)"
-        },
-        {
-          "step": 11,
-          "confidence": 0.323,
-          "hypothesis": "Top candidates: RAD51, XIAP, CDC25A (conf=32%)"
-        },
-        {
-          "step": 12,
-          "confidence": 0.415,
-          "hypothesis": "Top candidates: RAD51, XIAP, CDC25A (conf=41%)"
-        },
-        {
-          "step": 13,
-          "confidence": 0.565,
-          "hypothesis": "qPCR validated RAD51 (conf=56%)"
-        },
-        {
-          "step": 14,
-          "confidence": 0.715,
-          "hypothesis": "qPCR validated RAD51 (conf=71%)"
-        }
-      ],
-      "knowledge_graph": {
-        "nodes": [
-          "XIAP",
-          "RAD51",
-          "CDC25A",
-          "IL10"
-        ],
-        "edges": [
-          {
-            "source": "CDC25A",
-            "target": "RAD51",
-            "weight": 1
-          },
-          {
-            "source": "CDC25A",
-            "target": "XIAP",
-            "weight": 1
-          },
-          {
-            "source": "IL10",
-            "target": "XIAP",
-            "weight": 2
-          },
-          {
-            "source": "RAD51",
-            "target": "XIAP",
-            "weight": 1
-          }
-        ]
-      }
-    },
-    {
-      "episode": 9,
-      "reward": 7.7,
-      "steps": 18,
-      "score": 0.507,
-      "success": false,
-      "final_confidence": 0.71,
-      "true_targets": [
-        "HIF1A",
-        "ZEB1",
-        "MGMT"
-      ],
-      "submitted_candidates": [
-        "ARNT",
-        "ZEB1",
-        "FEN1"
-      ],
-      "matrix_shape": [
-        50,
-        3
-      ],
-      "last_hint": "Literature suggests ZEB1 shows elevated expression (mean=30.0) in this pathway.",
-      "kg_nodes": 3,
+      "last_hint": "Recent study: PIK3CA may be a key regulator in the observed phenotype.",
+      "kg_nodes": 12,
       "experiments_done": 11,
       "action_history": [
         {
@@ -1675,122 +1417,1482 @@
         },
         {
           "step": 2,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "ARNT",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.12246
         },
         {
           "step": 3,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "ARNT",
-          "confidence": 0.1
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "GATA1",
+          "confidence": 0.27246
         },
         {
           "step": 4,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "ARNT",
-          "confidence": 0.1
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "GATA1",
+          "confidence": 0.42246
         },
         {
           "step": 5,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "ZEB1",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "GATA1",
+          "confidence": 0.578019
         },
         {
           "step": 6,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "FEN1",
-          "confidence": 0.1
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "GATA1",
+          "confidence": 0.753444
         },
         {
           "step": 7,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "FEN1",
-          "confidence": 0.1
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "DNMT1",
+          "confidence": 0.753444
         },
         {
           "step": 8,
-          "action": 0,
-          "reward": -2.1,
-          "gene_tested": "ARNT",
-          "confidence": 0.1
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 0.753444
         },
         {
           "step": 9,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "ZEB1",
-          "confidence": 0.1
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "DNMT1",
+          "confidence": 0.753444
         },
         {
           "step": 10,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "ZEB1",
-          "confidence": 0.193
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "GATA1",
+          "confidence": 0.753444
         },
         {
           "step": 11,
           "action": 2,
           "reward": 4.9,
-          "gene_tested": "ZEB1",
-          "confidence": 0.338
+          "gene_tested": "GATA1",
+          "confidence": 0.875954
         },
         {
           "step": 12,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "ZEB1",
-          "confidence": 0.46
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "TERT",
+          "confidence": 0.875954
         },
         {
           "step": 13,
-          "action": 1,
-          "reward": 0.9,
-          "gene_tested": "ARNT",
-          "confidence": 0.51
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "TERT",
+          "confidence": 0.875954
         },
         {
           "step": 14,
           "action": 1,
-          "reward": 0.9,
-          "gene_tested": "ARNT",
-          "confidence": 0.56
+          "reward": 2.9,
+          "gene_tested": "GATA1",
+          "confidence": 1.0
         },
         {
           "step": 15,
-          "action": 1,
-          "reward": 0.9,
-          "gene_tested": "ARNT",
-          "confidence": 0.61
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "GATA1",
+          "confidence": 1.0
         },
         {
           "step": 16,
-          "action": 1,
-          "reward": 0.9,
-          "gene_tested": "ARNT",
-          "confidence": 0.66
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "GATA1",
+          "confidence": 1.0
         },
         {
           "step": 17,
-          "action": 1,
-          "reward": 0.9,
-          "gene_tested": "ARNT",
-          "confidence": 0.71
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "GATA1",
+          "confidence": 1.0
         },
         {
           "step": 18,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "RB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 19,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "RB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 20,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "PIK3CA",
+          "confidence": 1.0
+        },
+        {
+          "step": 21,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "XIAP",
+          "confidence": 1.0
+        },
+        {
+          "step": 22,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "XIAP",
+          "confidence": 1.0
+        },
+        {
+          "step": 23,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "GATA1",
+          "confidence": 1.0
+        },
+        {
+          "step": 24,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "GATA1",
+          "confidence": 1.0
+        },
+        {
+          "step": 25,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "GATA1",
+          "confidence": 1.0
+        },
+        {
+          "step": 26,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "GATA1",
+          "confidence": 1.0
+        },
+        {
+          "step": 27,
+          "action": 5,
+          "reward": 19.9,
+          "gene_tested": "GATA1",
+          "confidence": 1.0
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 3,
+          "confidence": 0.27246,
+          "hypothesis": "qPCR validated GATA1 (conf=27.25%)"
+        },
+        {
+          "step": 4,
+          "confidence": 0.42246,
+          "hypothesis": "qPCR validated GATA1 (conf=42.25%)"
+        },
+        {
+          "step": 5,
+          "confidence": 0.578019,
+          "hypothesis": "Top candidates: GATA1 (conf=58%)"
+        },
+        {
+          "step": 6,
+          "confidence": 0.753444,
+          "hypothesis": "Top candidates: GATA1 (conf=75%)"
+        },
+        {
+          "step": 11,
+          "confidence": 0.875954,
+          "hypothesis": "Top candidates: GATA1, DNMT1 (conf=88%)"
+        },
+        {
+          "step": 14,
+          "confidence": 1.0,
+          "hypothesis": "qPCR validated GATA1 (conf=100.00%)"
+        },
+        {
+          "step": 22,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: GATA1, PIK3CA, RB1 (conf=100%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "TERT",
+          "PIK3CA",
+          "RB1",
+          "XIAP",
+          "GATA1",
+          "DNMT1"
+        ],
+        "edges": [
+          {
+            "source": "DNMT1",
+            "target": "GATA1",
+            "weight": 2
+          },
+          {
+            "source": "GATA1",
+            "target": "TERT",
+            "weight": 2
+          },
+          {
+            "source": "GATA1",
+            "target": "RB1",
+            "weight": 1
+          },
+          {
+            "source": "PIK3CA",
+            "target": "RB1",
+            "weight": 1
+          },
+          {
+            "source": "PIK3CA",
+            "target": "XIAP",
+            "weight": 1
+          },
+          {
+            "source": "GATA1",
+            "target": "XIAP",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "episode": 6,
+      "reward": 58.4,
+      "steps": 21,
+      "score": 0.7713333333333332,
+      "success": true,
+      "final_confidence": 1.0,
+      "true_targets": [
+        "ABL1",
+        "BAX",
+        "SNAI1"
+      ],
+      "submitted_candidates": [
+        "BAX",
+        "SNAI1",
+        "NOTCH1"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Published data indicates correlation between ABL1 and the target condition.",
+      "kg_nodes": 13,
+      "experiments_done": 6,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.132197
+        },
+        {
+          "step": 2,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.132197
+        },
+        {
+          "step": 3,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "BAX",
+          "confidence": 0.282197
+        },
+        {
+          "step": 4,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "BAX",
+          "confidence": 0.282197
+        },
+        {
+          "step": 5,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "BAX",
+          "confidence": 0.282197
+        },
+        {
+          "step": 6,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.282197
+        },
+        {
+          "step": 7,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.377526
+        },
+        {
+          "step": 8,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.377526
+        },
+        {
+          "step": 9,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.377526
+        },
+        {
+          "step": 10,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.377526
+        },
+        {
+          "step": 11,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.377526
+        },
+        {
+          "step": 12,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.377526
+        },
+        {
+          "step": 13,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.552704
+        },
+        {
+          "step": 14,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "BAX",
+          "confidence": 0.702704
+        },
+        {
+          "step": 15,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "BAX",
+          "confidence": 0.702704
+        },
+        {
+          "step": 16,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "BAX",
+          "confidence": 0.702704
+        },
+        {
+          "step": 17,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "BAX",
+          "confidence": 0.87061
+        },
+        {
+          "step": 18,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SNAI1",
+          "confidence": 0.87061
+        },
+        {
+          "step": 19,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "SNAI1",
+          "confidence": 0.87061
+        },
+        {
+          "step": 20,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "BAX",
+          "confidence": 1.0
+        },
+        {
+          "step": 21,
+          "action": 5,
+          "reward": 19.9,
+          "gene_tested": "BAX",
+          "confidence": 1.0
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 3,
+          "confidence": 0.282197,
+          "hypothesis": "qPCR validated BAX (conf=28.22%)"
+        },
+        {
+          "step": 7,
+          "confidence": 0.377526,
+          "hypothesis": "Top candidates: BAX, NOTCH1 (conf=38%)"
+        },
+        {
+          "step": 13,
+          "confidence": 0.552704,
+          "hypothesis": "Top candidates: BAX, NOTCH1 (conf=55%)"
+        },
+        {
+          "step": 14,
+          "confidence": 0.702704,
+          "hypothesis": "qPCR validated BAX (conf=70.27%)"
+        },
+        {
+          "step": 17,
+          "confidence": 0.87061,
+          "hypothesis": "Top candidates: BAX, NOTCH1 (conf=87%)"
+        },
+        {
+          "step": 20,
+          "confidence": 1.0,
+          "hypothesis": "qPCR validated BAX (conf=100.00%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "SNAI1",
+          "BAX",
+          "NOTCH1"
+        ],
+        "edges": [
+          {
+            "source": "BAX",
+            "target": "NOTCH1",
+            "weight": 2
+          },
+          {
+            "source": "BAX",
+            "target": "SNAI1",
+            "weight": 2
+          }
+        ]
+      }
+    },
+    {
+      "episode": 7,
+      "reward": 5.9,
+      "steps": 11,
+      "score": 0.5866666666666667,
+      "success": false,
+      "final_confidence": 0.75,
+      "true_targets": [
+        "EGFR",
+        "JUN",
+        "CDH1"
+      ],
+      "submitted_candidates": [
+        "CDH1",
+        "CHEK2",
+        "MSH2"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Literature suggests EGFR shows elevated expression (mean=11.4) in this pathway.",
+      "kg_nodes": 4,
+      "experiments_done": 6,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "CHEK2",
+          "confidence": 0.15
+        },
+        {
+          "step": 2,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "MSH2",
+          "confidence": 0.15
+        },
+        {
+          "step": 3,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MSH2",
+          "confidence": 0.15
+        },
+        {
+          "step": 4,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "CDH1",
+          "confidence": 0.3
+        },
+        {
+          "step": 5,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "CDH1",
+          "confidence": 0.45
+        },
+        {
+          "step": 6,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CDH1",
+          "confidence": 0.45
+        },
+        {
+          "step": 7,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CDH1",
+          "confidence": 0.45
+        },
+        {
+          "step": 8,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "CDH1",
+          "confidence": 0.6
+        },
+        {
+          "step": 9,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "CDH1",
+          "confidence": 0.75
+        },
+        {
+          "step": 10,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CDH1",
+          "confidence": 0.75
+        },
+        {
+          "step": 11,
           "action": 5,
           "reward": -10.1,
-          "gene_tested": "ARNT",
-          "confidence": 0.71
+          "gene_tested": "CDH1",
+          "confidence": 0.75
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 1,
+          "confidence": 0.15,
+          "hypothesis": "qPCR validated CHEK2 (conf=15.00%)"
+        },
+        {
+          "step": 4,
+          "confidence": 0.3,
+          "hypothesis": "qPCR validated CDH1 (conf=30.00%)"
+        },
+        {
+          "step": 5,
+          "confidence": 0.45,
+          "hypothesis": "qPCR validated CDH1 (conf=45.00%)"
+        },
+        {
+          "step": 8,
+          "confidence": 0.6,
+          "hypothesis": "qPCR validated CDH1 (conf=60.00%)"
+        },
+        {
+          "step": 9,
+          "confidence": 0.75,
+          "hypothesis": "qPCR validated CDH1 (conf=75.00%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "CDH1",
+          "MSH2",
+          "CHEK2"
+        ],
+        "edges": [
+          {
+            "source": "CHEK2",
+            "target": "MSH2",
+            "weight": 1
+          },
+          {
+            "source": "CDH1",
+            "target": "MSH2",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "episode": 8,
+      "reward": -3.2,
+      "steps": 17,
+      "score": 0.4990725847428359,
+      "success": false,
+      "final_confidence": 0.40203,
+      "true_targets": [
+        "BCL2",
+        "PTEN",
+        "NOTCH1"
+      ],
+      "submitted_candidates": [
+        "NOTCH1",
+        "GATA1",
+        "BAX"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Recent study: BCL2 may be a key regulator in the observed phenotype.",
+      "kg_nodes": 7,
+      "experiments_done": 8,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.143988
+        },
+        {
+          "step": 2,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "GATA1",
+          "confidence": 0.143988
+        },
+        {
+          "step": 3,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "GATA1",
+          "confidence": 0.143988
+        },
+        {
+          "step": 4,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "BAX",
+          "confidence": 0.193988
+        },
+        {
+          "step": 5,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "GATA1",
+          "confidence": 0.193988
+        },
+        {
+          "step": 6,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "GATA1",
+          "confidence": 0.193988
+        },
+        {
+          "step": 7,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "HIF1A",
+          "confidence": 0.193988
+        },
+        {
+          "step": 8,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "HIF1A",
+          "confidence": 0.35203
+        },
+        {
+          "step": 9,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "HIF1A",
+          "confidence": 0.35203
+        },
+        {
+          "step": 10,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "HIF1A",
+          "confidence": 0.35203
+        },
+        {
+          "step": 11,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "GATA1",
+          "confidence": 0.40203
+        },
+        {
+          "step": 12,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "GATA1",
+          "confidence": 0.40203
+        },
+        {
+          "step": 13,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "GATA1",
+          "confidence": 0.40203
+        },
+        {
+          "step": 14,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "GATA1",
+          "confidence": 0.40203
+        },
+        {
+          "step": 15,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "MYC",
+          "confidence": 0.40203
+        },
+        {
+          "step": 16,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.40203
+        },
+        {
+          "step": 17,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "NOTCH1",
+          "confidence": 0.40203
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 4,
+          "confidence": 0.193988,
+          "hypothesis": "qPCR validated BAX (conf=19.40%)"
+        },
+        {
+          "step": 8,
+          "confidence": 0.35203,
+          "hypothesis": "Top candidates: GATA1, BAX, HIF1A (conf=35%)"
+        },
+        {
+          "step": 11,
+          "confidence": 0.40203,
+          "hypothesis": "qPCR validated GATA1 (conf=40.20%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "BAX",
+          "GATA1",
+          "HIF1A",
+          "MYC",
+          "NOTCH1"
+        ],
+        "edges": [
+          {
+            "source": "BAX",
+            "target": "GATA1",
+            "weight": 2
+          },
+          {
+            "source": "GATA1",
+            "target": "HIF1A",
+            "weight": 2
+          },
+          {
+            "source": "GATA1",
+            "target": "MYC",
+            "weight": 1
+          },
+          {
+            "source": "MYC",
+            "target": "NOTCH1",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "episode": 9,
+      "reward": 36.1,
+      "steps": 14,
+      "score": 0.7027142682098606,
+      "success": true,
+      "final_confidence": 0.541905,
+      "true_targets": [
+        "BAX",
+        "SMAD4",
+        "FGFR2"
+      ],
+      "submitted_candidates": [
+        "BAX",
+        "SMAD4"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Published data indicates correlation between SMAD4 and the target condition.",
+      "kg_nodes": 3,
+      "experiments_done": 4,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.143208
+        },
+        {
+          "step": 2,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.192638
+        },
+        {
+          "step": 3,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.236828
+        },
+        {
+          "step": 4,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.236828
+        },
+        {
+          "step": 5,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "\u2014",
+          "confidence": 0.236828
+        },
+        {
+          "step": 6,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "BAX",
+          "confidence": 0.386828
+        },
+        {
+          "step": 7,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "BAX",
+          "confidence": 0.386828
+        },
+        {
+          "step": 8,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "BAX",
+          "confidence": 0.386828
+        },
+        {
+          "step": 9,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "BAX",
+          "confidence": 0.386828
+        },
+        {
+          "step": 10,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "BAX",
+          "confidence": 0.386828
+        },
+        {
+          "step": 11,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SMAD4",
+          "confidence": 0.386828
+        },
+        {
+          "step": 12,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SMAD4",
+          "confidence": 0.386828
+        },
+        {
+          "step": 13,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "SMAD4",
+          "confidence": 0.541905
+        },
+        {
+          "step": 14,
+          "action": 5,
+          "reward": 19.9,
+          "gene_tested": "SMAD4",
+          "confidence": 0.541905
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 6,
+          "confidence": 0.386828,
+          "hypothesis": "qPCR validated BAX (conf=38.68%)"
+        },
+        {
+          "step": 13,
+          "confidence": 0.541905,
+          "hypothesis": "Top candidates: BAX, SMAD4 (conf=54%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "SMAD4",
+          "BAX"
+        ],
+        "edges": [
+          {
+            "source": "BAX",
+            "target": "SMAD4",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "episode": 10,
+      "reward": 131.1,
+      "steps": 64,
+      "score": 0.804,
+      "success": true,
+      "final_confidence": 1.0,
+      "true_targets": [
+        "SRC",
+        "DNMT1",
+        "SMAD4"
+      ],
+      "submitted_candidates": [
+        "DNMT1",
+        "SRC",
+        "SMAD4"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Conference abstract mentions CTNNB1, though replication studies are needed.",
+      "kg_nodes": 23,
+      "experiments_done": 33,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 3,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 4,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.151072
+        },
+        {
+          "step": 5,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.151072
+        },
+        {
+          "step": 6,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "HDAC1",
+          "confidence": 0.151072
+        },
+        {
+          "step": 7,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 0.151072
+        },
+        {
+          "step": 8,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 0.151072
+        },
+        {
+          "step": 9,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "DNMT1",
+          "confidence": 0.151072
+        },
+        {
+          "step": 10,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "DNMT1",
+          "confidence": 0.301072
+        },
+        {
+          "step": 11,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 0.301072
+        },
+        {
+          "step": 12,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 0.301072
+        },
+        {
+          "step": 13,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "DNMT1",
+          "confidence": 0.301072
+        },
+        {
+          "step": 14,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 0.301072
+        },
+        {
+          "step": 15,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "DNMT1",
+          "confidence": 0.407637
+        },
+        {
+          "step": 16,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "DNMT1",
+          "confidence": 0.583918
+        },
+        {
+          "step": 17,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "DNMT1",
+          "confidence": 0.712284
+        },
+        {
+          "step": 18,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 0.712284
+        },
+        {
+          "step": 19,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "DNMT1",
+          "confidence": 0.712284
+        },
+        {
+          "step": 20,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "DNMT1",
+          "confidence": 0.830187
+        },
+        {
+          "step": 21,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "DNMT1",
+          "confidence": 0.980187
+        },
+        {
+          "step": 22,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "CDK4",
+          "confidence": 0.980187
+        },
+        {
+          "step": 23,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CDK4",
+          "confidence": 0.980187
+        },
+        {
+          "step": 24,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CDK4",
+          "confidence": 0.980187
+        },
+        {
+          "step": 25,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SRC",
+          "confidence": 0.980187
+        },
+        {
+          "step": 26,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SRC",
+          "confidence": 0.980187
+        },
+        {
+          "step": 27,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "SRC",
+          "confidence": 1.0
+        },
+        {
+          "step": 28,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 29,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 30,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 31,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "WNT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 32,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "WNT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 33,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 34,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 35,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "TP53",
+          "confidence": 1.0
+        },
+        {
+          "step": 36,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SRC",
+          "confidence": 1.0
+        },
+        {
+          "step": 37,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SRC",
+          "confidence": 1.0
+        },
+        {
+          "step": 38,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 39,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 40,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SMAD4",
+          "confidence": 1.0
+        },
+        {
+          "step": 41,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "SMAD4",
+          "confidence": 1.0
+        },
+        {
+          "step": 42,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "SMAD4",
+          "confidence": 1.0
+        },
+        {
+          "step": 43,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 44,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 45,
+          "action": 1,
+          "reward": 1.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 46,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 47,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 48,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SMAD4",
+          "confidence": 1.0
+        },
+        {
+          "step": 49,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SRC",
+          "confidence": 1.0
+        },
+        {
+          "step": 50,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 51,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 52,
+          "action": 1,
+          "reward": 1.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 53,
+          "action": 1,
+          "reward": 1.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 54,
+          "action": 0,
+          "reward": 0.4,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 55,
+          "action": 1,
+          "reward": 1.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 56,
+          "action": 1,
+          "reward": 1.9,
+          "gene_tested": "DNMT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 57,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "PARP1",
+          "confidence": 1.0
+        },
+        {
+          "step": 58,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "PARP1",
+          "confidence": 1.0
+        },
+        {
+          "step": 59,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "MGMT",
+          "confidence": 1.0
+        },
+        {
+          "step": 60,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MGMT",
+          "confidence": 1.0
+        },
+        {
+          "step": 61,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "SRC",
+          "confidence": 1.0
+        },
+        {
+          "step": 62,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "SRC",
+          "confidence": 1.0
+        },
+        {
+          "step": 63,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "SRC",
+          "confidence": 1.0
+        },
+        {
+          "step": 64,
+          "action": 5,
+          "reward": 19.9,
+          "gene_tested": "SRC",
+          "confidence": 1.0
         }
       ],
       "hypothesis_history": [
@@ -1801,93 +2903,1343 @@
         },
         {
           "step": 10,
-          "confidence": 0.193,
-          "hypothesis": "Top candidates: ARNT, ZEB1, FEN1 (conf=19%)"
-        },
-        {
-          "step": 11,
-          "confidence": 0.338,
-          "hypothesis": "Top candidates: ARNT, ZEB1, FEN1 (conf=34%)"
-        },
-        {
-          "step": 12,
-          "confidence": 0.46,
-          "hypothesis": "Top candidates: ARNT, ZEB1, FEN1 (conf=46%)"
-        },
-        {
-          "step": 13,
-          "confidence": 0.51,
-          "hypothesis": "qPCR validated ARNT (conf=51%)"
-        },
-        {
-          "step": 14,
-          "confidence": 0.56,
-          "hypothesis": "qPCR validated ARNT (conf=56%)"
+          "confidence": 0.301072,
+          "hypothesis": "qPCR validated DNMT1 (conf=30.11%)"
         },
         {
           "step": 15,
-          "confidence": 0.61,
-          "hypothesis": "qPCR validated ARNT (conf=61%)"
+          "confidence": 0.407637,
+          "hypothesis": "Top candidates: DNMT1, HDAC1 (conf=41%)"
         },
         {
           "step": 16,
-          "confidence": 0.66,
-          "hypothesis": "qPCR validated ARNT (conf=66%)"
+          "confidence": 0.583918,
+          "hypothesis": "Top candidates: DNMT1, HDAC1 (conf=58%)"
         },
         {
           "step": 17,
-          "confidence": 0.71,
-          "hypothesis": "qPCR validated ARNT (conf=71%)"
+          "confidence": 0.712284,
+          "hypothesis": "Top candidates: DNMT1, HDAC1 (conf=71%)"
+        },
+        {
+          "step": 20,
+          "confidence": 0.830187,
+          "hypothesis": "Top candidates: DNMT1, HDAC1 (conf=83%)"
+        },
+        {
+          "step": 21,
+          "confidence": 0.980187,
+          "hypothesis": "qPCR validated DNMT1 (conf=98.02%)"
+        },
+        {
+          "step": 27,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: DNMT1, SRC, CDK4 (conf=100%)"
+        },
+        {
+          "step": 41,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: DNMT1, SRC, SMAD4 (conf=100%)"
+        },
+        {
+          "step": 42,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: DNMT1, SRC, SMAD4 (conf=100%)"
+        },
+        {
+          "step": 58,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: DNMT1, SRC, SMAD4 (conf=100%)"
+        },
+        {
+          "step": 62,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: DNMT1, SRC, SMAD4 (conf=100%)"
         }
       ],
       "knowledge_graph": {
         "nodes": [
-          "ZEB1",
-          "FEN1",
-          "ARNT"
+          "DNMT1",
+          "TP53",
+          "SMAD4",
+          "CDK4",
+          "PARP1",
+          "WNT1",
+          "SRC",
+          "MGMT",
+          "HDAC1"
         ],
         "edges": [
           {
-            "source": "ARNT",
-            "target": "ZEB1",
-            "weight": 3
-          },
-          {
-            "source": "FEN1",
-            "target": "ZEB1",
+            "source": "DNMT1",
+            "target": "HDAC1",
             "weight": 1
           },
           {
-            "source": "ARNT",
-            "target": "FEN1",
+            "source": "CDK4",
+            "target": "DNMT1",
+            "weight": 1
+          },
+          {
+            "source": "CDK4",
+            "target": "SRC",
+            "weight": 1
+          },
+          {
+            "source": "DNMT1",
+            "target": "SRC",
+            "weight": 3
+          },
+          {
+            "source": "DNMT1",
+            "target": "WNT1",
+            "weight": 2
+          },
+          {
+            "source": "DNMT1",
+            "target": "TP53",
+            "weight": 1
+          },
+          {
+            "source": "SRC",
+            "target": "TP53",
+            "weight": 1
+          },
+          {
+            "source": "DNMT1",
+            "target": "SMAD4",
+            "weight": 3
+          },
+          {
+            "source": "SMAD4",
+            "target": "SRC",
+            "weight": 1
+          },
+          {
+            "source": "DNMT1",
+            "target": "PARP1",
+            "weight": 1
+          },
+          {
+            "source": "MGMT",
+            "target": "PARP1",
+            "weight": 1
+          },
+          {
+            "source": "MGMT",
+            "target": "SRC",
             "weight": 1
           }
         ]
       }
     },
     {
-      "episode": 10,
-      "reward": 51.0,
-      "steps": 15,
-      "score": 0.719,
-      "success": true,
-      "final_confidence": 0.847,
+      "episode": 11,
+      "reward": 20.7,
+      "steps": 23,
+      "score": 0.5831258999850365,
+      "success": false,
+      "final_confidence": 0.912296,
       "true_targets": [
-        "JUN",
-        "CCNB1",
-        "BAX"
+        "TP53",
+        "VEGFA",
+        "RB1"
       ],
       "submitted_candidates": [
-        "JUN",
-        "CCNB1"
+        "HIF1A",
+        "VEGFA",
+        "CD40"
       ],
       "matrix_shape": [
         50,
-        3
+        4
       ],
-      "last_hint": "Preliminary evidence links DNMT3A to the pathway, but results are inconclusive.",
+      "last_hint": "Conference abstract mentions HIF1A, though replication studies are needed.",
+      "kg_nodes": 7,
+      "experiments_done": 8,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 3,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 4,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 5,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "CD40",
+          "confidence": 0.1
+        },
+        {
+          "step": 6,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "CD40",
+          "confidence": 0.13407
+        },
+        {
+          "step": 7,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "CD40",
+          "confidence": 0.158388
+        },
+        {
+          "step": 8,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CD40",
+          "confidence": 0.158388
+        },
+        {
+          "step": 9,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "CD40",
+          "confidence": 0.217712
+        },
+        {
+          "step": 10,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "CD40",
+          "confidence": 0.267189
+        },
+        {
+          "step": 11,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CD40",
+          "confidence": 0.267189
+        },
+        {
+          "step": 12,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "HIF1A",
+          "confidence": 0.317189
+        },
+        {
+          "step": 13,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "VEGFA",
+          "confidence": 0.317189
+        },
+        {
+          "step": 14,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "VEGFA",
+          "confidence": 0.44838
+        },
+        {
+          "step": 15,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "VEGFA",
+          "confidence": 0.575046
+        },
+        {
+          "step": 16,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "HIF1A",
+          "confidence": 0.625046
+        },
+        {
+          "step": 17,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "HIF1A",
+          "confidence": 0.712296
+        },
+        {
+          "step": 18,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "HIF1A",
+          "confidence": 0.762296
+        },
+        {
+          "step": 19,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "HIF1A",
+          "confidence": 0.812296
+        },
+        {
+          "step": 20,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "HIF1A",
+          "confidence": 0.862296
+        },
+        {
+          "step": 21,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "HIF1A",
+          "confidence": 0.862296
+        },
+        {
+          "step": 22,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "HIF1A",
+          "confidence": 0.912296
+        },
+        {
+          "step": 23,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "HIF1A",
+          "confidence": 0.912296
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 12,
+          "confidence": 0.317189,
+          "hypothesis": "qPCR validated HIF1A (conf=31.72%)"
+        },
+        {
+          "step": 14,
+          "confidence": 0.44838,
+          "hypothesis": "Top candidates: HIF1A, VEGFA, CD40 (conf=45%)"
+        },
+        {
+          "step": 15,
+          "confidence": 0.575046,
+          "hypothesis": "Top candidates: HIF1A, VEGFA, CD40 (conf=58%)"
+        },
+        {
+          "step": 16,
+          "confidence": 0.625046,
+          "hypothesis": "qPCR validated HIF1A (conf=62.50%)"
+        },
+        {
+          "step": 17,
+          "confidence": 0.712296,
+          "hypothesis": "Top candidates: HIF1A, VEGFA, CD40 (conf=71%)"
+        },
+        {
+          "step": 18,
+          "confidence": 0.762296,
+          "hypothesis": "qPCR validated HIF1A (conf=76.23%)"
+        },
+        {
+          "step": 19,
+          "confidence": 0.812296,
+          "hypothesis": "qPCR validated HIF1A (conf=81.23%)"
+        },
+        {
+          "step": 20,
+          "confidence": 0.862296,
+          "hypothesis": "qPCR validated HIF1A (conf=86.23%)"
+        },
+        {
+          "step": 22,
+          "confidence": 0.912296,
+          "hypothesis": "qPCR validated HIF1A (conf=91.23%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "VEGFA",
+          "CD40",
+          "HIF1A"
+        ],
+        "edges": [
+          {
+            "source": "CD40",
+            "target": "HIF1A",
+            "weight": 1
+          },
+          {
+            "source": "HIF1A",
+            "target": "VEGFA",
+            "weight": 2
+          }
+        ]
+      }
+    },
+    {
+      "episode": 12,
+      "reward": 2.0,
+      "steps": 20,
+      "score": 0.4637729137790871,
+      "success": false,
+      "final_confidence": 0.270531,
+      "true_targets": [
+        "MSH2",
+        "CTNNB1",
+        "MDM2"
+      ],
+      "submitted_candidates": [
+        "MYC",
+        "CTNNB1",
+        "CDK4"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Review article highlights MDM2 as a candidate in similar expression profiles.",
+      "kg_nodes": 10,
+      "experiments_done": 4,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.146527
+        },
+        {
+          "step": 3,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.193798
+        },
+        {
+          "step": 4,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.193798
+        },
+        {
+          "step": 5,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.193798
+        },
+        {
+          "step": 6,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.193798
+        },
+        {
+          "step": 7,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.193798
+        },
+        {
+          "step": 8,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.193798
+        },
+        {
+          "step": 9,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.193798
+        },
+        {
+          "step": 10,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.220531
+        },
+        {
+          "step": 11,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.220531
+        },
+        {
+          "step": 12,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "MYC",
+          "confidence": 0.270531
+        },
+        {
+          "step": 13,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MYC",
+          "confidence": 0.270531
+        },
+        {
+          "step": 14,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "MYC",
+          "confidence": 0.270531
+        },
+        {
+          "step": 15,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "CTNNB1",
+          "confidence": 0.270531
+        },
+        {
+          "step": 16,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CTNNB1",
+          "confidence": 0.270531
+        },
+        {
+          "step": 17,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "CDK4",
+          "confidence": 0.270531
+        },
+        {
+          "step": 18,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CDK4",
+          "confidence": 0.270531
+        },
+        {
+          "step": 19,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "MYC",
+          "confidence": 0.270531
+        },
+        {
+          "step": 20,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "MYC",
+          "confidence": 0.270531
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 12,
+          "confidence": 0.270531,
+          "hypothesis": "qPCR validated MYC (conf=27.05%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "MYC",
+          "CTNNB1",
+          "CDK4"
+        ],
+        "edges": [
+          {
+            "source": "CTNNB1",
+            "target": "MYC",
+            "weight": 1
+          },
+          {
+            "source": "CDK4",
+            "target": "CTNNB1",
+            "weight": 1
+          },
+          {
+            "source": "CDK4",
+            "target": "MYC",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "episode": 13,
+      "reward": 23.9,
+      "steps": 21,
+      "score": 0.6000219808109513,
+      "success": false,
+      "final_confidence": 0.966777,
+      "true_targets": [
+        "RB1",
+        "WNT1",
+        "SMAD4"
+      ],
+      "submitted_candidates": [
+        "WNT1",
+        "JUN",
+        "MSH2"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Preliminary evidence links SNAI1 to the pathway, but results are inconclusive.",
+      "kg_nodes": 10,
+      "experiments_done": 4,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "MSH2",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "MSH2",
+          "confidence": 0.1
+        },
+        {
+          "step": 3,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MSH2",
+          "confidence": 0.1
+        },
+        {
+          "step": 4,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MSH2",
+          "confidence": 0.1
+        },
+        {
+          "step": 5,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MSH2",
+          "confidence": 0.1
+        },
+        {
+          "step": 6,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "MSH2",
+          "confidence": 0.1
+        },
+        {
+          "step": 7,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "MSH2",
+          "confidence": 0.1
+        },
+        {
+          "step": 8,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.25
+        },
+        {
+          "step": 9,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "WNT1",
+          "confidence": 0.25
+        },
+        {
+          "step": 10,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "JUN",
+          "confidence": 0.25
+        },
+        {
+          "step": 11,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "JUN",
+          "confidence": 0.25
+        },
+        {
+          "step": 12,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.4
+        },
+        {
+          "step": 13,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "WNT1",
+          "confidence": 0.4
+        },
+        {
+          "step": 14,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "WNT1",
+          "confidence": 0.4
+        },
+        {
+          "step": 15,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.565949
+        },
+        {
+          "step": 16,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.719989
+        },
+        {
+          "step": 17,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "WNT1",
+          "confidence": 0.719989
+        },
+        {
+          "step": 18,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "WNT1",
+          "confidence": 0.719989
+        },
+        {
+          "step": 19,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.882013
+        },
+        {
+          "step": 20,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.966777
+        },
+        {
+          "step": 21,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "WNT1",
+          "confidence": 0.966777
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 8,
+          "confidence": 0.25,
+          "hypothesis": "qPCR validated WNT1 (conf=25.00%)"
+        },
+        {
+          "step": 12,
+          "confidence": 0.4,
+          "hypothesis": "qPCR validated WNT1 (conf=40.00%)"
+        },
+        {
+          "step": 15,
+          "confidence": 0.565949,
+          "hypothesis": "Top candidates: WNT1, JUN, MSH2 (conf=57%)"
+        },
+        {
+          "step": 16,
+          "confidence": 0.719989,
+          "hypothesis": "Top candidates: WNT1, JUN, MSH2 (conf=72%)"
+        },
+        {
+          "step": 19,
+          "confidence": 0.882013,
+          "hypothesis": "Top candidates: WNT1, JUN, MSH2 (conf=88%)"
+        },
+        {
+          "step": 20,
+          "confidence": 0.966777,
+          "hypothesis": "Top candidates: WNT1, JUN, MSH2 (conf=97%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "JUN",
+          "MSH2",
+          "WNT1"
+        ],
+        "edges": [
+          {
+            "source": "MSH2",
+            "target": "WNT1",
+            "weight": 1
+          },
+          {
+            "source": "JUN",
+            "target": "WNT1",
+            "weight": 2
+          }
+        ]
+      }
+    },
+    {
+      "episode": 14,
+      "reward": -6.4,
+      "steps": 9,
+      "score": 0.3413560633114586,
+      "success": false,
+      "final_confidence": 0.30178,
+      "true_targets": [
+        "JUN",
+        "CHEK2",
+        "BCL2"
+      ],
+      "submitted_candidates": [
+        "HIF1A",
+        "FGFR2",
+        "RAF1"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "BAX was identified in a low-powered screen \u2014 treat with caution.",
       "kg_nodes": 3,
-      "experiments_done": 9,
+      "experiments_done": 4,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "FGFR2",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "RAF1",
+          "confidence": 0.1
+        },
+        {
+          "step": 3,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "HIF1A",
+          "confidence": 0.1
+        },
+        {
+          "step": 4,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "HIF1A",
+          "confidence": 0.1
+        },
+        {
+          "step": 5,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "HIF1A",
+          "confidence": 0.25178
+        },
+        {
+          "step": 6,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "HIF1A",
+          "confidence": 0.25178
+        },
+        {
+          "step": 7,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "HIF1A",
+          "confidence": 0.25178
+        },
+        {
+          "step": 8,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "HIF1A",
+          "confidence": 0.30178
+        },
+        {
+          "step": 9,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "HIF1A",
+          "confidence": 0.30178
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 5,
+          "confidence": 0.25178,
+          "hypothesis": "Top candidates: HIF1A, RAF1, FGFR2 (conf=25%)"
+        },
+        {
+          "step": 8,
+          "confidence": 0.30178,
+          "hypothesis": "qPCR validated HIF1A (conf=30.18%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "RAF1",
+          "HIF1A",
+          "FGFR2"
+        ],
+        "edges": [
+          {
+            "source": "FGFR2",
+            "target": "RAF1",
+            "weight": 1
+          },
+          {
+            "source": "HIF1A",
+            "target": "RAF1",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "episode": 15,
+      "reward": 18.3,
+      "steps": 12,
+      "score": 0.6250613918773542,
+      "success": false,
+      "final_confidence": 0.956974,
+      "true_targets": [
+        "MYC",
+        "VEGFA",
+        "WNT1"
+      ],
+      "submitted_candidates": [
+        "WNT1"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Review article highlights VEGFA as a candidate in similar expression profiles.",
+      "kg_nodes": 4,
+      "experiments_done": 4,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.25
+        },
+        {
+          "step": 3,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "WNT1",
+          "confidence": 0.308377
+        },
+        {
+          "step": 4,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.458377
+        },
+        {
+          "step": 5,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "WNT1",
+          "confidence": 0.458377
+        },
+        {
+          "step": 6,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "WNT1",
+          "confidence": 0.458377
+        },
+        {
+          "step": 7,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.458377
+        },
+        {
+          "step": 8,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.624155
+        },
+        {
+          "step": 9,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.779275
+        },
+        {
+          "step": 10,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "WNT1",
+          "confidence": 0.779275
+        },
+        {
+          "step": 11,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "WNT1",
+          "confidence": 0.956974
+        },
+        {
+          "step": 12,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "WNT1",
+          "confidence": 0.956974
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 2,
+          "confidence": 0.25,
+          "hypothesis": "qPCR validated WNT1 (conf=25.00%)"
+        },
+        {
+          "step": 4,
+          "confidence": 0.458377,
+          "hypothesis": "qPCR validated WNT1 (conf=45.84%)"
+        },
+        {
+          "step": 8,
+          "confidence": 0.624155,
+          "hypothesis": "Top candidates: WNT1 (conf=62%)"
+        },
+        {
+          "step": 9,
+          "confidence": 0.779275,
+          "hypothesis": "Top candidates: WNT1 (conf=78%)"
+        },
+        {
+          "step": 11,
+          "confidence": 0.956974,
+          "hypothesis": "Top candidates: WNT1 (conf=96%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "WNT1"
+        ],
+        "edges": []
+      }
+    },
+    {
+      "episode": 16,
+      "reward": 51.0,
+      "steps": 20,
+      "score": 0.7491204644815783,
+      "success": true,
+      "final_confidence": 0.863936,
+      "true_targets": [
+        "MDM2",
+        "SNAI1",
+        "CREB1"
+      ],
+      "submitted_candidates": [
+        "MDM2",
+        "CREB1",
+        "AKT1"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Published data indicates correlation between CREB1 and the target condition.",
+      "kg_nodes": 8,
+      "experiments_done": 5,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.120346
+        },
+        {
+          "step": 3,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.167665
+        },
+        {
+          "step": 4,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "\u2014",
+          "confidence": 0.167665
+        },
+        {
+          "step": 5,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.167665
+        },
+        {
+          "step": 6,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "\u2014",
+          "confidence": 0.167665
+        },
+        {
+          "step": 7,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "AKT1",
+          "confidence": 0.167665
+        },
+        {
+          "step": 8,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 0.167665
+        },
+        {
+          "step": 9,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 0.167665
+        },
+        {
+          "step": 10,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.167665
+        },
+        {
+          "step": 11,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.167665
+        },
+        {
+          "step": 12,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.167665
+        },
+        {
+          "step": 13,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "MDM2",
+          "confidence": 0.167665
+        },
+        {
+          "step": 14,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "MDM2",
+          "confidence": 0.269217
+        },
+        {
+          "step": 15,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "MDM2",
+          "confidence": 0.269217
+        },
+        {
+          "step": 16,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "MDM2",
+          "confidence": 0.419217
+        },
+        {
+          "step": 17,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "MDM2",
+          "confidence": 0.546532
+        },
+        {
+          "step": 18,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "MDM2",
+          "confidence": 0.713936
+        },
+        {
+          "step": 19,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "MDM2",
+          "confidence": 0.863936
+        },
+        {
+          "step": 20,
+          "action": 5,
+          "reward": 19.9,
+          "gene_tested": "MDM2",
+          "confidence": 0.863936
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 14,
+          "confidence": 0.269217,
+          "hypothesis": "Top candidates: MDM2, CREB1, AKT1 (conf=27%)"
+        },
+        {
+          "step": 16,
+          "confidence": 0.419217,
+          "hypothesis": "qPCR validated MDM2 (conf=41.92%)"
+        },
+        {
+          "step": 17,
+          "confidence": 0.546532,
+          "hypothesis": "Top candidates: MDM2, CREB1, AKT1 (conf=55%)"
+        },
+        {
+          "step": 18,
+          "confidence": 0.713936,
+          "hypothesis": "Top candidates: MDM2, CREB1, AKT1 (conf=71%)"
+        },
+        {
+          "step": 19,
+          "confidence": 0.863936,
+          "hypothesis": "qPCR validated MDM2 (conf=86.39%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "MDM2",
+          "CREB1",
+          "AKT1"
+        ],
+        "edges": [
+          {
+            "source": "AKT1",
+            "target": "CREB1",
+            "weight": 1
+          },
+          {
+            "source": "CREB1",
+            "target": "MDM2",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "episode": 17,
+      "reward": 85.0,
+      "steps": 45,
+      "score": 0.6993333333333334,
+      "success": true,
+      "final_confidence": 1.0,
+      "true_targets": [
+        "CREB1",
+        "PTEN",
+        "FGFR2"
+      ],
+      "submitted_candidates": [
+        "CREB1",
+        "NF1",
+        "FGFR2"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Recent study: PTEN may be a key regulator in the observed phenotype.",
+      "kg_nodes": 20,
+      "experiments_done": 20,
       "action_history": [
         {
           "step": 1,
@@ -1900,99 +4252,309 @@
           "step": 2,
           "action": 0,
           "reward": 1.4,
-          "gene_tested": "JUN",
+          "gene_tested": "CREB1",
           "confidence": 0.1
         },
         {
           "step": 3,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "JUN",
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "CREB1",
           "confidence": 0.1
         },
         {
           "step": 4,
-          "action": 3,
-          "reward": 1.4,
-          "gene_tested": "JUN",
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "CREB1",
           "confidence": 0.1
         },
         {
           "step": 5,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "JUN",
-          "confidence": 0.1
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.25
         },
         {
           "step": 6,
-          "action": 0,
+          "action": 3,
           "reward": 1.4,
-          "gene_tested": "CCNB1",
-          "confidence": 0.1
+          "gene_tested": "CREB1",
+          "confidence": 0.25
         },
         {
           "step": 7,
-          "action": 3,
+          "action": 0,
           "reward": 1.4,
-          "gene_tested": "CCNB1",
-          "confidence": 0.1
+          "gene_tested": "CREB1",
+          "confidence": 0.25
         },
         {
           "step": 8,
-          "action": 0,
-          "reward": 1.4,
-          "gene_tested": "JUN",
-          "confidence": 0.1
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.25
         },
         {
           "step": 9,
-          "action": 0,
+          "action": 3,
           "reward": 1.4,
-          "gene_tested": "CCNB1",
-          "confidence": 0.1
+          "gene_tested": "CREB1",
+          "confidence": 0.25
         },
         {
           "step": 10,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "CCNB1",
-          "confidence": 0.266
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.25
         },
         {
           "step": 11,
-          "action": 2,
-          "reward": 4.9,
-          "gene_tested": "CCNB1",
-          "confidence": 0.397
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "NF1",
+          "confidence": 0.25
         },
         {
           "step": 12,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "JUN",
-          "confidence": 0.547
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "NF1",
+          "confidence": 0.25
         },
         {
           "step": 13,
-          "action": 1,
-          "reward": 2.9,
-          "gene_tested": "JUN",
-          "confidence": 0.697
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "NF1",
+          "confidence": 0.25
         },
         {
           "step": 14,
           "action": 1,
           "reward": 2.9,
-          "gene_tested": "JUN",
-          "confidence": 0.847
+          "gene_tested": "CREB1",
+          "confidence": 0.4
         },
         {
           "step": 15,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.4
+        },
+        {
+          "step": 16,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.4
+        },
+        {
+          "step": 17,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.55
+        },
+        {
+          "step": 18,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.55
+        },
+        {
+          "step": 19,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.55
+        },
+        {
+          "step": 20,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "FGFR2",
+          "confidence": 0.55
+        },
+        {
+          "step": 21,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "NF1",
+          "confidence": 0.55
+        },
+        {
+          "step": 22,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.55
+        },
+        {
+          "step": 23,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.666495
+        },
+        {
+          "step": 24,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.666495
+        },
+        {
+          "step": 25,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.816495
+        },
+        {
+          "step": 26,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.816495
+        },
+        {
+          "step": 27,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.816495
+        },
+        {
+          "step": 28,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.816495
+        },
+        {
+          "step": 29,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.816495
+        },
+        {
+          "step": 30,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.816495
+        },
+        {
+          "step": 31,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.896952
+        },
+        {
+          "step": 32,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.896952
+        },
+        {
+          "step": 33,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "PTEN",
+          "confidence": 0.896952
+        },
+        {
+          "step": 34,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "RAD51",
+          "confidence": 0.896952
+        },
+        {
+          "step": 35,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "PARP1",
+          "confidence": 0.896952
+        },
+        {
+          "step": 36,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "CREB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 37,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "CREB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 38,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "CREB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 39,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 40,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "CTNNB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 41,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "CTNNB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 42,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "NF1",
+          "confidence": 1.0
+        },
+        {
+          "step": 43,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "CREB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 44,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "CREB1",
+          "confidence": 1.0
+        },
+        {
+          "step": 45,
           "action": 5,
           "reward": 19.9,
-          "gene_tested": "JUN",
-          "confidence": 0.847
+          "gene_tested": "CREB1",
+          "confidence": 1.0
         }
       ],
       "hypothesis_history": [
@@ -2002,43 +4564,2025 @@
           "hypothesis": "No hypothesis formed yet."
         },
         {
-          "step": 10,
-          "confidence": 0.266,
-          "hypothesis": "Top candidates: JUN, CCNB1 (conf=27%)"
-        },
-        {
-          "step": 11,
-          "confidence": 0.397,
-          "hypothesis": "Top candidates: JUN, CCNB1 (conf=40%)"
-        },
-        {
-          "step": 12,
-          "confidence": 0.547,
-          "hypothesis": "qPCR validated JUN (conf=55%)"
-        },
-        {
-          "step": 13,
-          "confidence": 0.697,
-          "hypothesis": "qPCR validated JUN (conf=70%)"
+          "step": 5,
+          "confidence": 0.25,
+          "hypothesis": "qPCR validated CREB1 (conf=25.00%)"
         },
         {
           "step": 14,
-          "confidence": 0.847,
-          "hypothesis": "qPCR validated JUN (conf=85%)"
+          "confidence": 0.4,
+          "hypothesis": "qPCR validated CREB1 (conf=40.00%)"
+        },
+        {
+          "step": 17,
+          "confidence": 0.55,
+          "hypothesis": "qPCR validated CREB1 (conf=55.00%)"
+        },
+        {
+          "step": 23,
+          "confidence": 0.666495,
+          "hypothesis": "Top candidates: CREB1, NF1, FGFR2 (conf=67%)"
+        },
+        {
+          "step": 25,
+          "confidence": 0.816495,
+          "hypothesis": "qPCR validated CREB1 (conf=81.65%)"
+        },
+        {
+          "step": 31,
+          "confidence": 0.896952,
+          "hypothesis": "Top candidates: CREB1, NF1, FGFR2 (conf=90%)"
+        },
+        {
+          "step": 36,
+          "confidence": 1.0,
+          "hypothesis": "qPCR validated CREB1 (conf=100.00%)"
+        },
+        {
+          "step": 37,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: CREB1, NF1, FGFR2 (conf=100%)"
+        },
+        {
+          "step": 38,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: CREB1, NF1, FGFR2 (conf=100%)"
+        },
+        {
+          "step": 41,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: CREB1, NF1, FGFR2 (conf=100%)"
+        },
+        {
+          "step": 44,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: CREB1, NF1, FGFR2 (conf=100%)"
         }
       ],
       "knowledge_graph": {
         "nodes": [
-          "JUN",
-          "CCNB1"
+          "NF1",
+          "PTEN",
+          "FGFR2",
+          "PARP1",
+          "RAD51",
+          "CREB1",
+          "CTNNB1"
         ],
         "edges": [
           {
-            "source": "CCNB1",
-            "target": "JUN",
+            "source": "CREB1",
+            "target": "NF1",
             "weight": 4
+          },
+          {
+            "source": "CREB1",
+            "target": "FGFR2",
+            "weight": 1
+          },
+          {
+            "source": "FGFR2",
+            "target": "NF1",
+            "weight": 1
+          },
+          {
+            "source": "CREB1",
+            "target": "PTEN",
+            "weight": 1
+          },
+          {
+            "source": "PTEN",
+            "target": "RAD51",
+            "weight": 1
+          },
+          {
+            "source": "PARP1",
+            "target": "RAD51",
+            "weight": 1
+          },
+          {
+            "source": "CREB1",
+            "target": "PARP1",
+            "weight": 1
+          },
+          {
+            "source": "CREB1",
+            "target": "CTNNB1",
+            "weight": 1
+          },
+          {
+            "source": "CTNNB1",
+            "target": "NF1",
+            "weight": 1
           }
         ]
+      }
+    },
+    {
+      "episode": 18,
+      "reward": 2.5,
+      "steps": 10,
+      "score": 0.5196666666666667,
+      "success": false,
+      "final_confidence": 0.4,
+      "true_targets": [
+        "AKT1",
+        "MDM2",
+        "CHEK2"
+      ],
+      "submitted_candidates": [
+        "AKT1",
+        "FGFR2"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Conference abstract mentions CDK4, though replication studies are needed.",
+      "kg_nodes": 5,
+      "experiments_done": 5,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 0.1
+        },
+        {
+          "step": 3,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 0.1
+        },
+        {
+          "step": 4,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "FGFR2",
+          "confidence": 0.1
+        },
+        {
+          "step": 5,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "FGFR2",
+          "confidence": 0.1
+        },
+        {
+          "step": 6,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "FGFR2",
+          "confidence": 0.1
+        },
+        {
+          "step": 7,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 0.25
+        },
+        {
+          "step": 8,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 0.25
+        },
+        {
+          "step": 9,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 0.4
+        },
+        {
+          "step": 10,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "AKT1",
+          "confidence": 0.4
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 7,
+          "confidence": 0.25,
+          "hypothesis": "qPCR validated AKT1 (conf=25.00%)"
+        },
+        {
+          "step": 9,
+          "confidence": 0.4,
+          "hypothesis": "qPCR validated AKT1 (conf=40.00%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "AKT1",
+          "FGFR2"
+        ],
+        "edges": [
+          {
+            "source": "AKT1",
+            "target": "FGFR2",
+            "weight": 2
+          }
+        ]
+      }
+    },
+    {
+      "episode": 19,
+      "reward": 0.4,
+      "steps": 11,
+      "score": 0.47084589790552595,
+      "success": false,
+      "final_confidence": 0.170896,
+      "true_targets": [
+        "BAX",
+        "RAD51",
+        "PTEN"
+      ],
+      "submitted_candidates": [
+        "VEGFA",
+        "PTEN"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Literature suggests BAX shows elevated expression (mean=9.8) in this pathway.",
+      "kg_nodes": 6,
+      "experiments_done": 2,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.120896
+        },
+        {
+          "step": 2,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.120896
+        },
+        {
+          "step": 3,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.120896
+        },
+        {
+          "step": 4,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.120896
+        },
+        {
+          "step": 5,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "PTEN",
+          "confidence": 0.120896
+        },
+        {
+          "step": 6,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "PTEN",
+          "confidence": 0.120896
+        },
+        {
+          "step": 7,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "VEGFA",
+          "confidence": 0.170896
+        },
+        {
+          "step": 8,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "VEGFA",
+          "confidence": 0.170896
+        },
+        {
+          "step": 9,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "VEGFA",
+          "confidence": 0.170896
+        },
+        {
+          "step": 10,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "VEGFA",
+          "confidence": 0.170896
+        },
+        {
+          "step": 11,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "VEGFA",
+          "confidence": 0.170896
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 7,
+          "confidence": 0.170896,
+          "hypothesis": "qPCR validated VEGFA (conf=17.09%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "VEGFA",
+          "PTEN"
+        ],
+        "edges": [
+          {
+            "source": "PTEN",
+            "target": "VEGFA",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "episode": 20,
+      "reward": 89.5,
+      "steps": 60,
+      "score": 0.6543333333333333,
+      "success": true,
+      "final_confidence": 1.0,
+      "true_targets": [
+        "XIAP",
+        "CREB1",
+        "ZEB1"
+      ],
+      "submitted_candidates": [
+        "HDAC1",
+        "ZEB1",
+        "XIAP"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "CHEK2 was identified in a low-powered screen \u2014 treat with caution.",
+      "kg_nodes": 19,
+      "experiments_done": 31,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 0.15
+        },
+        {
+          "step": 2,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "STAT3",
+          "confidence": 0.194474
+        },
+        {
+          "step": 3,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "STAT3",
+          "confidence": 0.21549
+        },
+        {
+          "step": 4,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "STAT3",
+          "confidence": 0.239962
+        },
+        {
+          "step": 5,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "HIF1A",
+          "confidence": 0.239962
+        },
+        {
+          "step": 6,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.239962
+        },
+        {
+          "step": 7,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 0.289962
+        },
+        {
+          "step": 8,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "HDAC1",
+          "confidence": 0.339962
+        },
+        {
+          "step": 9,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "HDAC1",
+          "confidence": 0.499944
+        },
+        {
+          "step": 10,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "HDAC1",
+          "confidence": 0.499944
+        },
+        {
+          "step": 11,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "HDAC1",
+          "confidence": 0.499944
+        },
+        {
+          "step": 12,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "HDAC1",
+          "confidence": 0.649405
+        },
+        {
+          "step": 13,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "HDAC1",
+          "confidence": 0.790594
+        },
+        {
+          "step": 14,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "ZEB1",
+          "confidence": 0.790594
+        },
+        {
+          "step": 15,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "ZEB1",
+          "confidence": 0.790594
+        },
+        {
+          "step": 16,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 0.840594
+        },
+        {
+          "step": 17,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "PTEN",
+          "confidence": 0.840594
+        },
+        {
+          "step": 18,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 0.890594
+        },
+        {
+          "step": 19,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 20,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "KLF4",
+          "confidence": 1.0
+        },
+        {
+          "step": 21,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "KLF4",
+          "confidence": 1.0
+        },
+        {
+          "step": 22,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "KLF4",
+          "confidence": 1.0
+        },
+        {
+          "step": 23,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "KLF4",
+          "confidence": 1.0
+        },
+        {
+          "step": 24,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "KLF4",
+          "confidence": 1.0
+        },
+        {
+          "step": 25,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "KLF4",
+          "confidence": 1.0
+        },
+        {
+          "step": 26,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 27,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 28,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 29,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 30,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 31,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 32,
+          "action": 1,
+          "reward": -0.1,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 33,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 34,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 35,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 36,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 37,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 38,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 39,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 40,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 41,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 42,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "CD40",
+          "confidence": 1.0
+        },
+        {
+          "step": 43,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "ABL1",
+          "confidence": 1.0
+        },
+        {
+          "step": 44,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "ABL1",
+          "confidence": 1.0
+        },
+        {
+          "step": 45,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "BCL2",
+          "confidence": 1.0
+        },
+        {
+          "step": 46,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 47,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 48,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "ABL1",
+          "confidence": 1.0
+        },
+        {
+          "step": 49,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 50,
+          "action": 2,
+          "reward": 3.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 51,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "TERT",
+          "confidence": 1.0
+        },
+        {
+          "step": 52,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "TERT",
+          "confidence": 1.0
+        },
+        {
+          "step": 53,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "TERT",
+          "confidence": 1.0
+        },
+        {
+          "step": 54,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 55,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "KLF4",
+          "confidence": 1.0
+        },
+        {
+          "step": 56,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 57,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "XIAP",
+          "confidence": 1.0
+        },
+        {
+          "step": 58,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 59,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        },
+        {
+          "step": 60,
+          "action": 5,
+          "reward": 19.9,
+          "gene_tested": "STAT3",
+          "confidence": 1.0
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 1,
+          "confidence": 0.15,
+          "hypothesis": "qPCR validated STAT3 (conf=15.00%)"
+        },
+        {
+          "step": 7,
+          "confidence": 0.289962,
+          "hypothesis": "qPCR validated STAT3 (conf=29.00%)"
+        },
+        {
+          "step": 8,
+          "confidence": 0.339962,
+          "hypothesis": "qPCR validated HDAC1 (conf=34.00%)"
+        },
+        {
+          "step": 9,
+          "confidence": 0.499944,
+          "hypothesis": "Top candidates: STAT3, CREB1, HDAC1 (conf=50%)"
+        },
+        {
+          "step": 12,
+          "confidence": 0.649405,
+          "hypothesis": "Top candidates: STAT3, HDAC1, CREB1 (conf=65%)"
+        },
+        {
+          "step": 13,
+          "confidence": 0.790594,
+          "hypothesis": "Top candidates: STAT3, HDAC1, CREB1 (conf=79%)"
+        },
+        {
+          "step": 16,
+          "confidence": 0.840594,
+          "hypothesis": "qPCR validated STAT3 (conf=84.06%)"
+        },
+        {
+          "step": 18,
+          "confidence": 0.890594,
+          "hypothesis": "qPCR validated STAT3 (conf=89.06%)"
+        },
+        {
+          "step": 19,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: STAT3, ZEB1, HDAC1 (conf=100%)"
+        },
+        {
+          "step": 21,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: STAT3, ZEB1, HDAC1 (conf=100%)"
+        },
+        {
+          "step": 22,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: STAT3, ZEB1, HDAC1 (conf=100%)"
+        },
+        {
+          "step": 28,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: STAT3, ZEB1, CREB1 (conf=100%)"
+        },
+        {
+          "step": 30,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: STAT3, ZEB1, CREB1 (conf=100%)"
+        },
+        {
+          "step": 50,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: STAT3, ZEB1, CREB1 (conf=100%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "ZEB1",
+          "TERT",
+          "PTEN",
+          "ABL1",
+          "XIAP",
+          "HIF1A",
+          "KLF4",
+          "CD40",
+          "STAT3",
+          "HDAC1",
+          "CREB1",
+          "BCL2"
+        ],
+        "edges": [
+          {
+            "source": "HIF1A",
+            "target": "STAT3",
+            "weight": 1
+          },
+          {
+            "source": "CREB1",
+            "target": "HIF1A",
+            "weight": 1
+          },
+          {
+            "source": "CREB1",
+            "target": "STAT3",
+            "weight": 1
+          },
+          {
+            "source": "HDAC1",
+            "target": "STAT3",
+            "weight": 1
+          },
+          {
+            "source": "HDAC1",
+            "target": "ZEB1",
+            "weight": 1
+          },
+          {
+            "source": "STAT3",
+            "target": "ZEB1",
+            "weight": 1
+          },
+          {
+            "source": "PTEN",
+            "target": "STAT3",
+            "weight": 2
+          },
+          {
+            "source": "KLF4",
+            "target": "STAT3",
+            "weight": 4
+          },
+          {
+            "source": "CD40",
+            "target": "STAT3",
+            "weight": 1
+          },
+          {
+            "source": "ABL1",
+            "target": "CD40",
+            "weight": 1
+          },
+          {
+            "source": "ABL1",
+            "target": "BCL2",
+            "weight": 1
+          },
+          {
+            "source": "BCL2",
+            "target": "STAT3",
+            "weight": 1
+          },
+          {
+            "source": "ABL1",
+            "target": "STAT3",
+            "weight": 2
+          },
+          {
+            "source": "STAT3",
+            "target": "TERT",
+            "weight": 2
+          },
+          {
+            "source": "STAT3",
+            "target": "XIAP",
+            "weight": 2
+          }
+        ]
+      }
+    },
+    {
+      "episode": 21,
+      "reward": 4.7,
+      "steps": 13,
+      "score": 0.5231631808650624,
+      "success": false,
+      "final_confidence": 0.462483,
+      "true_targets": [
+        "XIAP",
+        "GATA1",
+        "ARID1A"
+      ],
+      "submitted_candidates": [
+        "XIAP",
+        "STAT3"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Published data indicates correlation between XIAP and the target condition.",
+      "kg_nodes": 7,
+      "experiments_done": 4,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.125695
+        },
+        {
+          "step": 3,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.125695
+        },
+        {
+          "step": 4,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.125695
+        },
+        {
+          "step": 5,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.162483
+        },
+        {
+          "step": 6,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.162483
+        },
+        {
+          "step": 7,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "STAT3",
+          "confidence": 0.162483
+        },
+        {
+          "step": 8,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "XIAP",
+          "confidence": 0.312483
+        },
+        {
+          "step": 9,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "XIAP",
+          "confidence": 0.312483
+        },
+        {
+          "step": 10,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "XIAP",
+          "confidence": 0.462483
+        },
+        {
+          "step": 11,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "XIAP",
+          "confidence": 0.462483
+        },
+        {
+          "step": 12,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "XIAP",
+          "confidence": 0.462483
+        },
+        {
+          "step": 13,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "XIAP",
+          "confidence": 0.462483
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 8,
+          "confidence": 0.312483,
+          "hypothesis": "qPCR validated XIAP (conf=31.25%)"
+        },
+        {
+          "step": 10,
+          "confidence": 0.462483,
+          "hypothesis": "qPCR validated XIAP (conf=46.25%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "STAT3",
+          "XIAP"
+        ],
+        "edges": [
+          {
+            "source": "STAT3",
+            "target": "XIAP",
+            "weight": 1
+          }
+        ]
+      }
+    },
+    {
+      "episode": 22,
+      "reward": -1.3,
+      "steps": 13,
+      "score": 0.3640681773959238,
+      "success": false,
+      "final_confidence": 0.475341,
+      "true_targets": [
+        "SNAI1",
+        "TERT",
+        "SMAD4"
+      ],
+      "submitted_candidates": [
+        "CREB1",
+        "EGFR"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "CDH1 was identified in a low-powered screen \u2014 treat with caution.",
+      "kg_nodes": 3,
+      "experiments_done": 4,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 3,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 4,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "CREB1",
+          "confidence": 0.1
+        },
+        {
+          "step": 5,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.121221
+        },
+        {
+          "step": 6,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.160613
+        },
+        {
+          "step": 7,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "CREB1",
+          "confidence": 0.160613
+        },
+        {
+          "step": 8,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "CREB1",
+          "confidence": 0.160613
+        },
+        {
+          "step": 9,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.297555
+        },
+        {
+          "step": 10,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.425341
+        },
+        {
+          "step": 11,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "EGFR",
+          "confidence": 0.425341
+        },
+        {
+          "step": 12,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "CREB1",
+          "confidence": 0.475341
+        },
+        {
+          "step": 13,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "CREB1",
+          "confidence": 0.475341
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 9,
+          "confidence": 0.297555,
+          "hypothesis": "Top candidates: CREB1 (conf=30%)"
+        },
+        {
+          "step": 10,
+          "confidence": 0.425341,
+          "hypothesis": "Top candidates: CREB1 (conf=43%)"
+        },
+        {
+          "step": 12,
+          "confidence": 0.475341,
+          "hypothesis": "qPCR validated CREB1 (conf=47.53%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "EGFR",
+          "CREB1"
+        ],
+        "edges": [
+          {
+            "source": "CREB1",
+            "target": "EGFR",
+            "weight": 2
+          }
+        ]
+      }
+    },
+    {
+      "episode": 23,
+      "reward": 85.5,
+      "steps": 45,
+      "score": 0.5326666666666666,
+      "success": false,
+      "final_confidence": 1.0,
+      "true_targets": [
+        "EGFR",
+        "AKT1",
+        "ZEB1"
+      ],
+      "submitted_candidates": [
+        "HIF1A",
+        "PARP1",
+        "AKT1"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Preliminary evidence links ABL1 to the pathway, but results are inconclusive.",
+      "kg_nodes": 19,
+      "experiments_done": 19,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "BAX",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 1,
+          "reward": 0.9,
+          "gene_tested": "RAF1",
+          "confidence": 0.15
+        },
+        {
+          "step": 3,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 0.3
+        },
+        {
+          "step": 4,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 0.423854
+        },
+        {
+          "step": 5,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 0.423854
+        },
+        {
+          "step": 6,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 0.521965
+        },
+        {
+          "step": 7,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "CD40",
+          "confidence": 0.521965
+        },
+        {
+          "step": 8,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 0.671965
+        },
+        {
+          "step": 9,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "AKT1",
+          "confidence": 0.671965
+        },
+        {
+          "step": 10,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 0.671965
+        },
+        {
+          "step": 11,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 0.671965
+        },
+        {
+          "step": 12,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 0.671965
+        },
+        {
+          "step": 13,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 0.671965
+        },
+        {
+          "step": 14,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "COL1A1",
+          "confidence": 0.671965
+        },
+        {
+          "step": 15,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 0.821965
+        },
+        {
+          "step": 16,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 0.908279
+        },
+        {
+          "step": 17,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 18,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 19,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 20,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 21,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 22,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 23,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 24,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 25,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 26,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 27,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 28,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 29,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "BAX",
+          "confidence": 1.0
+        },
+        {
+          "step": 30,
+          "action": 1,
+          "reward": 1.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 31,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 32,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 33,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "HIF1A",
+          "confidence": 1.0
+        },
+        {
+          "step": 34,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 35,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "ABL1",
+          "confidence": 1.0
+        },
+        {
+          "step": 36,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 37,
+          "action": 4,
+          "reward": 1.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 38,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 39,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 40,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 41,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "PARP1",
+          "confidence": 1.0
+        },
+        {
+          "step": 42,
+          "action": 1,
+          "reward": 2.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 43,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 44,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        },
+        {
+          "step": 45,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "AKT1",
+          "confidence": 1.0
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 2,
+          "confidence": 0.15,
+          "hypothesis": "qPCR validated RAF1 (conf=15.00%)"
+        },
+        {
+          "step": 3,
+          "confidence": 0.3,
+          "hypothesis": "qPCR validated AKT1 (conf=30.00%)"
+        },
+        {
+          "step": 4,
+          "confidence": 0.423854,
+          "hypothesis": "Top candidates: AKT1, RAF1, BAX (conf=42%)"
+        },
+        {
+          "step": 6,
+          "confidence": 0.521965,
+          "hypothesis": "Top candidates: AKT1, RAF1, BAX (conf=52%)"
+        },
+        {
+          "step": 8,
+          "confidence": 0.671965,
+          "hypothesis": "qPCR validated AKT1 (conf=67.20%)"
+        },
+        {
+          "step": 15,
+          "confidence": 0.821965,
+          "hypothesis": "qPCR validated AKT1 (conf=82.20%)"
+        },
+        {
+          "step": 16,
+          "confidence": 0.908279,
+          "hypothesis": "Top candidates: AKT1, RAF1, COL1A1 (conf=91%)"
+        },
+        {
+          "step": 17,
+          "confidence": 1.0,
+          "hypothesis": "qPCR validated AKT1 (conf=100.00%)"
+        },
+        {
+          "step": 19,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: AKT1, RAF1, COL1A1 (conf=100%)"
+        },
+        {
+          "step": 22,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: AKT1, RAF1, COL1A1 (conf=100%)"
+        },
+        {
+          "step": 24,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: AKT1, RAF1, COL1A1 (conf=100%)"
+        },
+        {
+          "step": 27,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: AKT1, RAF1, COL1A1 (conf=100%)"
+        },
+        {
+          "step": 28,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: AKT1, RAF1, COL1A1 (conf=100%)"
+        },
+        {
+          "step": 32,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: AKT1, RAF1, BAX (conf=100%)"
+        },
+        {
+          "step": 40,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: AKT1, ABL1, HIF1A (conf=100%)"
+        },
+        {
+          "step": 43,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: AKT1, ABL1, HIF1A (conf=100%)"
+        },
+        {
+          "step": 44,
+          "confidence": 1.0,
+          "hypothesis": "Top candidates: AKT1, ABL1, HIF1A (conf=100%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "BAX",
+          "ABL1",
+          "COL1A1",
+          "CD40",
+          "HIF1A",
+          "PARP1",
+          "RAF1",
+          "AKT1"
+        ],
+        "edges": [
+          {
+            "source": "BAX",
+            "target": "RAF1",
+            "weight": 1
+          },
+          {
+            "source": "AKT1",
+            "target": "RAF1",
+            "weight": 1
+          },
+          {
+            "source": "AKT1",
+            "target": "CD40",
+            "weight": 2
+          },
+          {
+            "source": "AKT1",
+            "target": "COL1A1",
+            "weight": 2
+          },
+          {
+            "source": "AKT1",
+            "target": "BAX",
+            "weight": 2
+          },
+          {
+            "source": "AKT1",
+            "target": "HIF1A",
+            "weight": 2
+          },
+          {
+            "source": "ABL1",
+            "target": "AKT1",
+            "weight": 2
+          },
+          {
+            "source": "AKT1",
+            "target": "PARP1",
+            "weight": 2
+          }
+        ]
+      }
+    },
+    {
+      "episode": 24,
+      "reward": -1.4,
+      "steps": 14,
+      "score": 0.30242158587290274,
+      "success": false,
+      "final_confidence": 0.182108,
+      "true_targets": [
+        "SRC",
+        "ARID1A",
+        "PALB2"
+      ],
+      "submitted_candidates": [
+        "PTEN"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Conference abstract mentions ABL1, though replication studies are needed.",
+      "kg_nodes": 8,
+      "experiments_done": 1,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.142426
+        },
+        {
+          "step": 3,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.142426
+        },
+        {
+          "step": 4,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "\u2014",
+          "confidence": 0.142426
+        },
+        {
+          "step": 5,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.142426
+        },
+        {
+          "step": 6,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "\u2014",
+          "confidence": 0.142426
+        },
+        {
+          "step": 7,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.142426
+        },
+        {
+          "step": 8,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.142426
+        },
+        {
+          "step": 9,
+          "action": 0,
+          "reward": -2.1,
+          "gene_tested": "PTEN",
+          "confidence": 0.142426
+        },
+        {
+          "step": 10,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "PTEN",
+          "confidence": 0.142426
+        },
+        {
+          "step": 11,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "PTEN",
+          "confidence": 0.182108
+        },
+        {
+          "step": 12,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "PTEN",
+          "confidence": 0.182108
+        },
+        {
+          "step": 13,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "PTEN",
+          "confidence": 0.182108
+        },
+        {
+          "step": 14,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "PTEN",
+          "confidence": 0.182108
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "PTEN"
+        ],
+        "edges": []
+      }
+    },
+    {
+      "episode": 25,
+      "reward": 2.0,
+      "steps": 10,
+      "score": 0.4910763509701083,
+      "success": false,
+      "final_confidence": 0.257048,
+      "true_targets": [
+        "RAD51",
+        "GATA1",
+        "PTEN"
+      ],
+      "submitted_candidates": [
+        "RAD51"
+      ],
+      "matrix_shape": [
+        50,
+        4
+      ],
+      "last_hint": "Published data indicates correlation between RAD51 and the target condition.",
+      "kg_nodes": 3,
+      "experiments_done": 2,
+      "action_history": [
+        {
+          "step": 1,
+          "action": 4,
+          "reward": -0.6,
+          "gene_tested": "\u2014",
+          "confidence": 0.1
+        },
+        {
+          "step": 2,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.133445
+        },
+        {
+          "step": 3,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.133445
+        },
+        {
+          "step": 4,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.133445
+        },
+        {
+          "step": 5,
+          "action": 2,
+          "reward": 0.4,
+          "gene_tested": "\u2014",
+          "confidence": 0.160322
+        },
+        {
+          "step": 6,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "RAD51",
+          "confidence": 0.160322
+        },
+        {
+          "step": 7,
+          "action": 0,
+          "reward": 1.4,
+          "gene_tested": "RAD51",
+          "confidence": 0.160322
+        },
+        {
+          "step": 8,
+          "action": 3,
+          "reward": 1.4,
+          "gene_tested": "RAD51",
+          "confidence": 0.160322
+        },
+        {
+          "step": 9,
+          "action": 2,
+          "reward": 4.9,
+          "gene_tested": "RAD51",
+          "confidence": 0.257048
+        },
+        {
+          "step": 10,
+          "action": 5,
+          "reward": -10.1,
+          "gene_tested": "RAD51",
+          "confidence": 0.257048
+        }
+      ],
+      "hypothesis_history": [
+        {
+          "step": 0,
+          "confidence": 0.1,
+          "hypothesis": "No hypothesis formed yet."
+        },
+        {
+          "step": 9,
+          "confidence": 0.257048,
+          "hypothesis": "Top candidates: RAD51 (conf=26%)"
+        }
+      ],
+      "knowledge_graph": {
+        "nodes": [
+          "RAD51"
+        ],
+        "edges": []
       }
     }
   ],
@@ -2046,7 +6590,7 @@
     "agent": {
       "exploration": "epsilon_greedy",
       "learning_rate": 0.0003,
-      "type": "greedy",
+      "type": "ppo",
       "use_claude_oracle": false
     },
     "constraints": {
@@ -2055,8 +6599,8 @@
       "time_limit": 0
     },
     "dataset": {
-      "name": "",
-      "source": "synthetic"
+      "name": "cancer_gene_expression",
+      "source": "preloaded"
     },
     "prior_knowledge": {
       "associations": [],
@@ -2072,8 +6616,8 @@
     "scenario": {
       "difficulty": "medium",
       "domain": "gene_expression",
-      "max_steps": 50,
-      "num_episodes": 10,
+      "max_steps": 100,
+      "num_episodes": 25,
       "objective": "Identify Key Regulator Genes",
       "seed": 42
     },

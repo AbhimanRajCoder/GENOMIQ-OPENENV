@@ -11,3 +11,5 @@ gradio-client>=2.0.0
 plotly>=5.18.0
 pandas>=2.1.0
 PyYAML>=6.0.1
+rich>=13.0.0
+# gitpython>=3.1.0 (using subprocess instead)

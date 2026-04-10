@@ -52,7 +52,8 @@ def log_step(step: int, action: str, reward: float, done: bool, error: Optional[
 def log_end(success: bool, steps: int, score: float, rewards: list[float]) -> None:
     rewards_str = ",".join(f"{r:.2f}" for r in rewards)
     safe_score = clamp_score(score)
-    print(f"[END]   success={str(success).lower()} steps={steps} score={safe_score:.6f} rewards={rewards_str}", flush=True)
+    # Match the example format: success=true steps=3 score=0.000 rewards=0.00,0.00,1.00
+    print(f"[END]   success={str(success).lower()} steps={steps} score={safe_score:.3f} rewards={rewards_str}", flush=True)
 
 
 # ── LLM action selector ──────────────────────────────────────────────────────
